@@ -1,0 +1,1 @@
+{"version":3,"sources":["js/index.js"],"names":["console","log"],"mappings":";AAAAA,QAAQC,IAAI","file":"js.ec4fd2a4.js","sourceRoot":"../src","sourcesContent":["console.log('HELLO');\n"]}
