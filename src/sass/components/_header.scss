@@ -1,0 +1,516 @@
+//  -------------- NORMALIZE ------//
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  color: #000;
+}
+
+hr {
+  height: 0;
+  color: inherit;
+}
+
+abbr[title] {
+  text-decoration: underline dotted;
+}
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: Roboto, sans-serif;
+  font-size: 1em;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+table {
+  text-indent: 0;
+  border-color: inherit;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+}
+
+::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+legend {
+  padding: 0;
+}
+
+progress {
+  vertical-align: baseline;
+}
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type='search'] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+summary {
+  display: list-item;
+}
+
+body,
+button,
+ul,
+ol,
+h1,
+h2,
+h3,
+h4,
+p {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+// --------- BREAKPOINT ------------//
+
+$phone: 320px;
+$tablet: 768px;
+$desktop: 1024px;
+
+// ------ CONTEINER -----------//
+
+.section {
+  width: 100%;
+  padding: 32px 0 40px;
+
+  @media screen and (min-width: $tablet) {
+    padding: 32px 0 60px;
+  }
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @media screen and (min-width: $tablet) {
+    width: 768px;
+    padding: 0 32px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 1024px;
+  }
+}
+
+// ---------- VARS ---------//
+
+$ff-main: 'Roboto', sans-serif;
+$white-color: #fff;
+$black-color: #000;
+$accent-color: #ff6b08;
+$accent-shadow: 0px 0px 6px 2px #ff6b0880;
+$bg-gradient: linear-gradient(#00000056, #00000056);
+
+$animation-duration: 250ms;
+$bezier-transition: cubic-bezier(0.4, 0, 0.2, 1);
+$ease-transition: 250ms ease-in-out;
+
+// ------------- FONT ---------------//
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap);
+
+@mixin font($fw, $fs, $lh, $fc: $black-color, $ls: 0) {
+  font-weight: $fw;
+  font-size: $fs;
+  line-height: $lh / $fs;
+  color: $fc;
+  letter-spacing: $ls;
+}
+
+.header {
+  background-color: $black-color;
+  &__container {
+    position: relative;
+    height: 230px;
+    padding-top: 40px;
+    background-color: $black-color;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    @media screen and (min-width: $tablet) {
+      height: 216px;
+    }
+
+    &_home {
+      background-image: $bg-gradient, url(../img/home-mob-1x.jpg);
+
+      @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+        background-image: $bg-gradient, url(../img/home-mob-2x.jpg);
+      }
+
+      @media screen and (min-width: $tablet) {
+        background-image: $bg-gradient, url(../img/home-tab-1x.jpg);
+
+        @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+          background-image: $bg-gradient, url(../img/home-tab-2x.jpg);
+        }
+
+        @media screen and (min-width: $desktop) {
+          background-image: $bg-gradient, url(../img/home-desk-1x.jpg);
+
+          @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+            background-image: $bg-gradient, url(../img/home-desk-2x.jpg);
+          }
+        }
+      }
+    }
+
+    &_library {
+      background-image: $bg-gradient, url(../img/library-mob-1x.jpg);
+
+      @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+        background-image: $bg-gradient, url(../img/library-mob-2x.jpg);
+      }
+
+      @media screen and (min-width: $tablet) {
+        background-image: $bg-gradient, url(../img/library-tab-1x.jpg);
+
+        @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+          background-image: $bg-gradient, url(../img/library-tab-2x.jpg);
+        }
+      }
+
+      @media screen and (min-width: $desktop) {
+        background-image: $bg-gradient, url(../img/library-desk-1x.jpg);
+
+        @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+          background-image: $bg-gradient, url(../img/library-desk-2x.jpg);
+        }
+      }
+    }
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__text {
+    display: none;
+    margin-left: 10px;
+    @include font(500, 30px, 35px, $white-color, 0);
+
+    @media screen and (min-width: $tablet) {
+      display: inline-flex;
+    }
+  }
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+
+  &__menu {
+    display: flex;
+    align-items: center;
+  }
+
+  &__item {
+    position: relative;
+    margin-right: 39px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    color: $white-color;
+    font-family: $ff-main;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 21px;
+    text-transform: uppercase;
+
+    &.active {
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        left: 0px;
+        bottom: 0px;
+        background: $accent-color;
+      }
+    }
+  }
+}
+
+.search-conteiner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+
+  @media screen and (min-width: $desktop) {
+    margin-top: 42px;
+  }
+}
+
+.search-form {
+  position: relative;
+  display: flex;
+  width: 280px;
+
+  @media screen and (min-width: $tablet) {
+    width: 336px;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 4px;
+    border: none;
+    border-bottom: 0.5px solid $white-color;
+    background-color: transparent;
+    outline: none;
+    @include font(400, 14px, 16px, $white-color);
+
+    &::placeholder {
+      @include font(400, 14px, 16px, $white-color);
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    width: 12px;
+    height: 12px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__icon {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// ------------ BUTTON ------------//
+
+.button-library {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 110px;
+  max-height: 60px;
+
+  border-radius: 5px;
+  padding: 13px;
+  background-color: transparent;
+  border: 1px solid $black-color;
+  text-transform: uppercase;
+  @include font(500, 12px, 16px);
+
+  transition: background-color $animation-duration $bezier-transition,
+    border-color $animation-duration $bezier-transition,
+    color $animation-duration $bezier-transition;
+
+  &:hover,
+  &:focus,
+  &.is-active {
+    cursor: pointer;
+    color: $white-color;
+    border-color: $accent-color;
+    background-color: $accent-color;
+  }
+
+  &.is-active {
+    cursor: pointer;
+    color: $white-color;
+    border-color: $accent-color;
+    background-color: $accent-color;
+    padding: 8.5px;
+  }
+}
+
+// ------------ LIB (+button) -----------------//
+
+.library-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  &__item {
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__button {
+    width: 130px;
+    height: 44px;
+    border: 1px solid $white-color;
+    border-radius: 5px;
+    @include font(500, 12px, 16px, $white-color);
+    text-transform: uppercase;
+    background-color: transparent;
+    outline: none;
+    transition: background-color $ease-transition, box-shadow $ease-transition;
+
+    &:hover,
+    &:focus,
+    &.is-active {
+      cursor: pointer;
+      background-color: $accent-color;
+      border: 1px solid $accent-color;
+      box-shadow: $accent-shadow;
+    }
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+
+    @media screen and (min-width: $tablet) {
+      width: 152px;
+      &:not(:last-child) {
+        margin-right: 32px;
+      }
+    }
+    @media screen and (min-width: $desktop) {
+      width: 148px;
+      height: 42px;
+      &:not(:last-child) {
+        margin-right: 16px;
+      }
+    }
+  }
+}
+//-------------- VISUALLY - HIDDEN ------------//
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}

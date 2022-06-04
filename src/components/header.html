@@ -1,0 +1,44 @@
+<header class="header">
+  <div class="container header__container header__container_home">
+    <nav class="navigation">
+      <a href="#" class="logo">
+        <h1 class="logo__text">Filmoteka</h1>
+      </a>
+
+      <ul class="navigation__menu">
+        <li class="navigation__item">
+          <a class="navigation__link" href="#">Home</a>
+        </li>
+        <li class="navigation__item">
+          <a class="navigation__link active" href="#">My library</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="search-conteiner">
+      <form class="search-form active">
+        <label for="movie-search" class="visually-hidden">Search movie</label>
+        <input
+          id="movie-search"
+          name="searchQuery"
+          type="text"
+          class="search-form__input"
+          placeholder="Search for movies..."
+        />
+
+        <button class="search-form__button" type="submit">
+          <span class="visually-hidden">Search</span>
+        </button>
+      </form>
+
+      <ul class="library-menu">
+        <li class="library-menu__item">
+          <button type="button" class="library-menu__button is-active">watched</button>
+        </li>
+        <li class="library-menu__item">
+          <button type="button" class="library-menu__button">queue</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
