@@ -24,14 +24,9 @@
     "parcel-plugin-handlebars-precompile": "^1.0.2",
     "parcel-plugin-nuke-dist": "^1.0.1",
     "posthtml-include": "^1.6.2",
-<<<<<<< HEAD
-    "sass": "^1.32.8",
-    "sass-loader": "^13.0.0"
-=======
     "sass": "^1.32.8"
   },
   "dependencies": {
     "axios": "^0.27.2"
->>>>>>> 112e7f92782f3dd4596333ce4ae0d4bf02a753ed
   }
 }
