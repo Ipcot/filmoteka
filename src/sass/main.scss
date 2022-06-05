@@ -1,2 +1,9 @@
+@import './utiles/variables.scss';
+@import './utiles/reset.scss';
+@import './utiles/mixin.scss';
+@import './utiles/visually-hidden.scss';
+@import './common/base.scss';
 @import './components/header.scss';
 @import './components/film-container';
+@import './components/container';
+
