@@ -1,0 +1,217 @@
+
+.backdrop{
+   background-color: rgba($color: #818181, $alpha: 0.25);
+    position: fixed;
+    overflow: scroll;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    transition: opacity $animation-duration $bezier-transition;
+    z-index: 20;
+    &--is-hidden .modal {
+        transform: scale(0.15);
+        bottom: 0vh;
+        transition: transform $animation-duration $bezier-transition, opacity $animation-duration $bezier-transition;
+}
+    &--is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $animation-duration $bezier-transition;
+  }
+}
+
+.modal {
+    position: relative;
+    margin: 0 auto;
+    width: 280px;
+    max-height: 940px;
+    background-color: $white-color;
+    opacity: 1;
+    transform: scale(1);
+    transition: transform $animation-duration $bezier-transition, opacity $animation-duration $bezier-transition;
+    @media screen and (min-width: $tablet) {
+        display: flex;
+        margin-top: 216px;
+        width: 704px;
+        height: 552px;
+    }
+    @media screen and (min-width: $desktop) {
+        margin-top: 184px;
+        width: 814px;
+        height: 558px;
+    }
+        
+    }
+
+.modal__btn--close {
+    background: transparent;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
+    border: none;
+    z-index: 10;
+}
+
+.icon-close {
+    width: 30px;
+    height: 30px;
+    fill: currentColor;
+}
+
+.movie__image {
+    @media screen and (min-width: $phone) {
+        padding: 48px 20px 20px 20px;
+        &--img{
+           width: 240px;
+        }
+    }
+  
+    @media screen and (min-width: $tablet) {
+       padding-top: 40px;
+       padding-left: 36px;
+        &--img {
+            width: 264px;
+        }
+    }
+    @media screen and (min-width: $desktop) {
+        padding: 40px 16px 16px 16px;
+        &--img {
+            width: 375px;
+        }
+    }
+}
+.modal-wrapper{
+    @media screen and (min-width: $tablet) {
+        margin-top: 40px;
+        margin-left: 48px;
+    }
+    @media screen and (min-width: $desktop) {
+        margin-top: 40px;
+        margin-left: 16px;
+    }   
+}
+
+.movie__title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.15;
+    margin-left: 20px;
+    text-transform: uppercase;
+    @media screen and (min-width: $tablet) {
+        max-height: 20px;
+    }
+    @media screen and (min-width: $desktop) {
+        font-size: 30px;
+        line-height: 1.16;
+    }
+}
+
+.movie-details-info {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    &__item {
+     display: flex;
+     align-items: baseline;
+     width: 215px;
+     margin: 8px 0;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    @media screen and (min-width: $tablet) {
+        max-height: 100px;   
+    }
+          
+}
+
+.details__first-item {
+    display: block;
+    width: 70px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    color: #8C8C8C;
+}
+
+.rate-color {
+    padding: 0 10px;
+    background: $accent-color;
+    color: $white-color;
+    border-radius: 5px;
+}
+
+.details__second-item {
+    display: block;
+    margin-left: 15%;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.16;
+}
+
+.about__movie {
+    margin: 20px;
+}
+
+.movie__description {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.67;
+    @media screen and (min-width: $tablet) {
+        max-width: 264px;
+    }
+    @media screen and (min-width: $desktop) {
+        max-width: 391px;
+    }
+}
+
+.to-uppercase{
+    text-transform: uppercase;
+}
+
+.movie__description--title {
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.modal__buttons {
+    display: flex;
+    margin-left: 20px;
+    padding-bottom: 40px;
+    @media screen and (min-width: $tablet) {
+      padding-bottom: 0;
+    }
+}
+
+.modal__btn {
+    margin-right: 20px;
+    padding: 6px 27px;
+    max-width: 110px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    text-align: center;
+    text-transform: uppercase;
+    background: transparent;
+    border-radius: 5px;
+    border: 1px solid $black-color;
+    cursor: pointer;
+    &:hover, &:focus {
+        background: $accent-color;
+        color: $white-color;
+        border: none;
+    }
+    @media screen and (min-width: $tablet) {
+        min-width: 125px;
+        padding: 14px 8px;
+    }
+    @media screen and (min-width: $desktop) {
+        min-width: 136px;
+        padding: 14px 10px;
+    }
+        
+    }

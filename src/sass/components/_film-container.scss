@@ -38,8 +38,13 @@
   cursor: pointer;
   background-color: rgba(93, 229, 247, 0.61);
   height: 478.95px;
+
   &:nth-last-child(-n + 1) {
     margin-bottom: 0px;
+
+    &:last-child {
+      margin-right: auto;
+    }
   }
 
   @media (min-width: $tablet) {
@@ -64,7 +69,7 @@
     height: 522.86px;
 
     &:nth-child(2n) {
-      margin-right: 15px;
+      margin-right: 16px;
     }
 
     &:nth-child(3n) {
