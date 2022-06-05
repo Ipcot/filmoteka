@@ -8,3 +8,15 @@
   color: $fc;
   letter-spacing: $ls;
 }
+
+//-----------ANIMATION-HEADER-----------//
+
+@mixin animate-active {
+  height: 0;
+  transform: scaleY(0);
+  transition: transform ease-in 300ms, height ease-in 300ms;
+  &.active {
+    height: auto;
+    transform: scaleY(1);
+  }
+}

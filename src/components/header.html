@@ -1,22 +1,29 @@
 <header class="header">
   <div class="container header__container header__container_home">
     <nav class="navigation">
-      <a href="#" class="logo">
+      <a href="#" class="logo" data-page="home" data-action="switch-page">
+        <svg class="logo__icon">
+          <use href="./img/icons/sprite.svg#icon-film"></use>
+        </svg>
         <h1 class="logo__text">Filmoteka</h1>
       </a>
 
       <ul class="navigation__menu">
         <li class="navigation__item">
-          <a class="navigation__link" href="#">Home</a>
+          <a class="navigation__link" data-page="home" data-action="switch-page" init href="#"
+            >Home</a
+          >
         </li>
         <li class="navigation__item">
-          <a class="navigation__link active" href="#">My library</a>
+          <a class="navigation__link" data-page="library" data-action="switch-page" href="#"
+            >My library</a
+          >
         </li>
       </ul>
     </nav>
 
     <div class="search-conteiner">
-      <form class="search-form active">
+      <form class="search-form active" data-root="search-form">
         <label for="movie-search" class="visually-hidden">Search movie</label>
         <input
           id="movie-search"
@@ -27,11 +34,14 @@
         />
 
         <button class="search-form__button" type="submit">
+          <svg class="search-form__icon">
+            <use href="./img/icons/sprite.svg#icon-search"></use>
+          </svg>
           <span class="visually-hidden">Search</span>
         </button>
       </form>
 
-      <ul class="library-menu">
+      <ul class="library-menu" data-root="library-buttons">
         <li class="library-menu__item">
           <button type="button" class="library-menu__button is-active">watched</button>
         </li>
