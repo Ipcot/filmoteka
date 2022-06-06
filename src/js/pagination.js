@@ -1,4 +1,5 @@
 import Pagination from 'tui-pagination';
+import throttle from 'lodash.throttle';
 
 const container = document.getElementById('pagination');
 const options = {
@@ -79,7 +80,7 @@ const options = {
       }
 
       let tpl =
-        `<a href="#" class="tui-page-btn tui-${type.type}-is-ellip custom-class-${type.type} ${customBtnClass}">` +
+        `<a href="#" class="tui-page-btn tui-${type.type}-is-ellip pagination__btn--hidden custom-class-${type.type} ${customBtnClass}">` +
         `<span class="tui-ico-ellip">...</span>` +
         `</a>`;
       return tpl;
@@ -87,14 +88,31 @@ const options = {
   },
 };
 const instance = new Pagination(container, options);
-instance.getCurrentPage();
 
-onPageChange();
+function onResize() {
+  matchStylesToMedia();
+}
 
-instance.on('afterMove', event => {
-  const currentPage = event.page;
-  onPageChange(currentPage);
-});
+function matchStylesToMedia() {
+  let refs = {
+    prevEllipBtn: document.querySelector('.tui-prev-is-ellip'),
+    nextEllipBtn: document.querySelector('.tui-next-is-ellip'),
+    moveBtnFirst: document.querySelector('.pagination__move-btn-first'),
+    moveBtnLast: document.querySelector('.pagination__move-btn-last'),
+  };
+  if (matchMedia('(max-width: 768px)').matches) {
+    refs.prevEllipBtn?.classList.add('pagination__btn--hidden');
+    refs.nextEllipBtn?.classList.add('pagination__btn--hidden');
+    refs.moveBtnFirst?.classList.add('pagination__btn--hidden');
+    refs.moveBtnLast?.classList.add('pagination__btn--hidden');
+    return;
+  } else {
+    let hiddenElements = document.querySelectorAll('.pagination__btn--hidden');
+    hiddenElements.forEach(element => {
+      element.classList.remove('pagination__btn--hidden');
+    });
+  }
+}
 
 function onPageChange(currentPage = 1) {
   let firstBtn = document.querySelector('.pagination__move-btn-first');
@@ -103,6 +121,8 @@ function onPageChange(currentPage = 1) {
   let totalPages = Math.floor(options.totalItems / options.itemsPerPage);
   let totalBatches = Math.ceil(totalPages / options.visiblePages);
   let currentBatch = Math.ceil(currentPage / options.visiblePages);
+
+  onResize();
 
   if (currentPage <= options.visiblePages) {
     firstBtn.classList.add('pagination__move-btn--hidden');
@@ -116,3 +136,14 @@ function onPageChange(currentPage = 1) {
     lastBtn.classList.remove('pagination__move-btn--hidden');
   }
 }
+
+instance.getCurrentPage();
+
+onPageChange();
+
+instance.on('afterMove', event => {
+  const currentPage = event.page;
+  onPageChange(currentPage);
+});
+
+window.addEventListener('resize', throttle(onResize, 200));

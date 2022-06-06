@@ -4,17 +4,18 @@
   justify-content: center;
   height: 40px;
   padding: 8px;
+  transition: background-color $ease-transition;
 }
 
 .tui-is-selected {
-  background-color: #ff6b08;
-  color: #ffffff;
+  background-color: $accent-color;
+  color: $white-color;
   border-radius: 5px;
   width: 40px;
   height: 40px;
   text-align: center;
+  transition: background-color $ease-transition;
 }
-
 
 .pagination {
   display: flex;
@@ -23,7 +24,7 @@
 
   a {
     text-decoration: none;
-    color: #000000;
+    color: $black-color;
   }
 
   &__page {
@@ -36,6 +37,12 @@
 
   &__move-btn--next {
     order: 3;
+  }
+
+  &__btn {
+    &--hidden {
+      display: none;
+    }
   }
 
   &__move-btn {
@@ -79,5 +86,3 @@
     height: 24px;
   }
 }
-
-
