@@ -136,6 +136,7 @@
 }
 
 .search-form {
+  @include animate-active();
   position: relative;
   display: flex;
   width: 280px;
@@ -223,6 +224,7 @@
 // ------------ LIB (+button) -----------------//
 
 .library-menu {
+  @include animate-active();
   display: flex;
   justify-content: center;
   align-items: center;
