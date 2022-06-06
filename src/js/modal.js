@@ -1,16 +1,23 @@
+import modalTpl from '../templates/modal.hbs';
+
+import MoviesAPI from './services/movies-api';
+const moviesAPI = new MoviesAPI();
 const refs = {
-    modal: document.querySelector('[data-modal]'),
-    modalOpen: document.querySelector('[data-modal-open]'),
-    modalClose: document.querySelector('[data-modal-close]'),
+    modal: document.querySelector('.js-modal'),
+    modalOpen: document.querySelectorAll('.collection__item'),
+    modalClose: document.querySelector('.js-modal-close'),
     backdrop: document.querySelector('.backdrop'),
 }
 
-refs.modalOpen.addEventListener('click', onOpenModal);
+refs.modalOpen.forEach(item => {
+    item.addEventListener('click', onOpenModal);
+});
 
-function onOpenModal() {
+export default function onOpenModal(id) {
     window.addEventListener('keydown', onEscKeyPress);
     refs.modal.classList.remove('backdrop--is-hidden');
-}
+    createModal(id);
+ }
 
 refs.modalClose.addEventListener('click', onCloseModal);
 
@@ -31,3 +38,17 @@ function onEscKeyPress(e) {
         onCloseModal();
     }
 }
+
+let movieId = 361745;
+
+const picturePath = 'https://image.tmdb.org/t/p/w300';
+
+function createModal() {
+    moviesAPI.fetchMovieDetails(movieId).then(movieObj => {
+    const { poster_path, title } = movieObj;
+    console.log(picturePath + poster_path + title);
+    const markup = modalTpl(movieObj);
+    refs.modal.innerHTML = '';
+    refs.modal.insertAdjacentHTML('afterbegin', markup);
+})}
+
