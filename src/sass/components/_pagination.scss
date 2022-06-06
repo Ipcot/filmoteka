@@ -1,0 +1,88 @@
+.tui-page-btn {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  height: 40px;
+  padding: 8px;
+  transition: background-color $ease-transition;
+}
+
+.tui-is-selected {
+  background-color: $accent-color;
+  color: $white-color;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  transition: background-color $ease-transition;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+
+  a {
+    text-decoration: none;
+    color: $black-color;
+  }
+
+  &__page {
+    order: 2;
+  }
+
+  &__page--current {
+    order: 2;
+  }
+
+  &__move-btn--next {
+    order: 3;
+  }
+
+  &__btn {
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &__move-btn {
+    background: #f7f7f7;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &--hidden {
+      display: none;
+    }
+
+    &-first,
+    &-last {
+      order: 2;
+      cursor: pointer;
+    }
+  }
+
+  &__more-btn-prev {
+    order: 2;
+  }
+  &__more-btn-next {
+    order: 2;
+  }
+
+  &__icon-left {
+    display: inline-block;
+    background-image: url(../img/pagination/arrow-left.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+  }
+
+  &__icon-right {
+    display: inline-block;
+    background-image: url(../img/pagination/arrow-right.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+  }
+}
