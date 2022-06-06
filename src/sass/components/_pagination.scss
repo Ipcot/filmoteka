@@ -1,0 +1,83 @@
+.tui-page-btn {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  height: 40px;
+  padding: 8px;
+}
+
+.tui-is-selected {
+  background-color: #ff6b08;
+  color: #ffffff;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+}
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+
+  a {
+    text-decoration: none;
+    color: #000000;
+  }
+
+  &__page {
+    order: 2;
+  }
+
+  &__page--current {
+    order: 2;
+  }
+
+  &__move-btn--next {
+    order: 3;
+  }
+
+  &__move-btn {
+    background: #f7f7f7;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &--hidden {
+      display: none;
+    }
+
+    &-first,
+    &-last {
+      order: 2;
+      cursor: pointer;
+    }
+  }
+
+  &__more-btn-prev {
+    order: 2;
+  }
+  &__more-btn-next {
+    order: 2;
+  }
+
+  &__icon-left {
+    display: inline-block;
+    background-image: url(../img/pagination/arrow-left.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+  }
+
+  &__icon-right {
+    display: inline-block;
+    background-image: url(../img/pagination/arrow-right.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+  }
+}
+
+
