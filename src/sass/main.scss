@@ -1,13 +1,15 @@
-@import './utiles/variables.scss';
-@import './utiles/reset.scss';
-@import './utiles/mixin.scss';
-@import './utiles/visually-hidden.scss';
+@import './utiles/variables';
+@import './utiles/reset';
+@import './utiles/mixin';
+@import './utiles/visually-hidden';
 @import './common/base.scss';
-@import './components/header.scss';
-@import './components/film-container';
-@import './components/footer.scss';
+@import './components/header';
+@import './components/movies';
+@import './components/footer';
 @import './components/container';
-@import './components/modal.scss';
+@import './components/modal';
 @import './components/pagination';
 @import './components/library-gallery.scss';
 @import './components/backToTop.scss';
+@import './components/card';
+

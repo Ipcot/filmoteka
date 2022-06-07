@@ -1,10 +1,14 @@
-import './services/api-demo';
+// import './services/api-demo';
 import './header';
 import './services/localStorage';
 import './services/render-library-markup';
 import './modal';
-import './modal';
 import './pagination';
+
 import './services/back-to-top'
 
-console.log('HELLO');
+import './show-movies/get-popular';
+import './show-movies/delegation';
+
+
+// console.log('HELLO');

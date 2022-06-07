@@ -1,3 +1,5 @@
+import searchMovies from './show-movies/search-movies';
+
 export const refs = {
   conteinerHeader: document.querySelector('.header__container'),
   btnsLibs: document.querySelectorAll('.library-menu__button'),
@@ -89,13 +91,11 @@ refs.btnsLibs.forEach(element => element.addEventListener('click', handleLibType
 const handleSearch = e => {
   e.preventDefault();
 
-  const {
-    elements: { searchQuery },
-  } = e.target;
+  const { searchQuery } = e.target.elements;
 
   const query = searchQuery.value.trim();
 
-  console.log(query);
+  searchMovies(query);
 
   e.target.reset();
 };
