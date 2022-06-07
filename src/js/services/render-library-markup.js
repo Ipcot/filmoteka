@@ -1,7 +1,7 @@
 import emptyImg from '../../img/blank.jpg';
-import MoviesAPI from './services/movies-api';
+// import MoviesAPI from './services/movies-api';
 
-const moviesAPI = new MoviesAPI();
+// const moviesAPI = new MoviesAPI();
 export default function renderLibraryMarkup(movArr) {
   const libraryGall = document.querySelector('.film-container');
 

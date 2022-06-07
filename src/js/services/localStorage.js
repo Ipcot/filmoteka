@@ -1,7 +1,7 @@
 import renderLibraryMarkup from './render-library-markup';
 // import MoviesAPI from './services/movies-api';
 import Notiflix from 'notiflix';
-const imgBlank = document.querySelector('.взяти img з film-container');
+const imgBlank = document.querySelector('.collection__item');
 const btnLibraryWatched = document.querySelector('.btn-library-watched');
 const btnLibraryQueue = document.querySelector('.btn-library-queue');
 const libraryGall = document.querySelector('.film-container');
@@ -64,7 +64,7 @@ function renderQueueMovies() {
     renderLibraryMarkup(queuedArr);
   }
 }
-function toogleBtnsLibrary(a, b) {
-  a.classList.add('is-active');
-  b.classList.remove('is-active');
+function toogleBtnsLibrary(btnLibraryQueue, btnLibraryWatched) {
+  btnLibraryQueue.classList.add('is-active');
+  btnLibraryWatched.classList.remove('is-active');
 }
