@@ -10,7 +10,6 @@ export const refs = {
   searchForm: document.querySelector('[data-root="search-form"]'),
   refLibsSelect: document.querySelector('[data-root="library-buttons"]'),
   switchTheme: document.querySelector('.switch-btn'),
-  // switchThemeLigth: document.querySelector('.switch-on'),
 };
 //------------removeActive------------//
 
@@ -141,7 +140,7 @@ if (!currentTheme) {
   body.classList.add(currentTheme);
 }
 
-// switchTheme.click = currentTheme === ORIGINALLY ? false : true;
+switchTheme.click = currentTheme === ORIGINALLY ? false : true;
 
 const changeTheme = () => {
   body.classList.toggle(PATRIOTIC);
