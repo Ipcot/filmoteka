@@ -6,15 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="./sass/main.scss" />
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/png" />
     <title>FlixFinder</title>
   </head>
 
   <body>
     <include src="components/header.html"></include>
     <main>
+
+      <include src="components/library-gallery.html"></include>
+      <include src="components/film-container.html"></include>
+      <include src="./components/card.html"></include>
+
       <include src="components/movies.html"></include>
+
       <include src="./components/modal.html"></include>
       <include src="./components/pagination.html"></include>
+      <include src="./components/back-to-top.html"></include>
     </main>
     <include src="./components/footer.html"></include>
     <script src="./js/index.js"></script>
