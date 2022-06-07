@@ -1,0 +1,17 @@
+<li class='card collection__item'>
+  <div class='card__thumb'>
+    <image class='card__image' alt='{{title}}' src='{{poster}}' data-id='{{id}}' />
+  </div>
+  <div class='card__description'>
+    <h2 class='card__title' data-id='{{id}}'>{{title}}</h2>
+    <div class='card__stats'>
+      <ul class='card__item-list list'>
+        {{#each genres}}
+          <li class='card__item'>{{this}}</li>
+        {{/each}}
+      </ul>
+      <p class='card__year'>{{year}}</p>
+      <p class='card__rating'>{{vote_average}}</p>
+    </div>
+  </div>
+</li>

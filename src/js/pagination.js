@@ -1,10 +1,12 @@
 import Pagination from 'tui-pagination';
 import throttle from 'lodash.throttle';
+import showMovies from './show-movies/movies-to-paginate';
 
 const container = document.getElementById('pagination');
+
 const options = {
   totalItems: 515,
-  itemsPerPage: 10,
+  itemsPerPage: 20,
   visiblePages: 5,
   page: 1,
   centerAlign: false,
@@ -87,6 +89,7 @@ const options = {
     },
   },
 };
+
 const instance = new Pagination(container, options);
 
 function onResize() {
@@ -114,7 +117,8 @@ function matchStylesToMedia() {
   }
 }
 
-function onPageChange(currentPage = 1) {
+export default function onPageChange(currentPage = 1) {
+  showMovies(currentPage);
   let firstBtn = document.querySelector('.pagination__move-btn-first');
   let lastBtn = document.querySelector('.pagination__move-btn-last');
 
@@ -143,6 +147,7 @@ onPageChange();
 
 instance.on('afterMove', event => {
   const currentPage = event.page;
+
   onPageChange(currentPage);
 });
 
