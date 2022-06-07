@@ -1,17 +1,15 @@
 .card {
   width: 100%;
-  transition: transform $animation-duration $bezier-transition;
-
-  &:hover {
-    transform: scale(1.023);
-  }
+  margin-bottom: 20px;
 
   @media screen and (min-width: 768px) {
-    // width: calc((100% - 2 * 30px) / 2);
+    margin: 15px;
+    width: calc((100% - 2 * 30px) / 2);
   }
 
   @media screen and (min-width: 1200px) {
-    width: calc((100% - 2 * 16px) / 3);
+    margin-right: 0px;
+    width: calc((100% - 3 * 30px) / 3);
   }
 
   &__item-list {
@@ -47,20 +45,15 @@
   }
 
   &__year {
-    display: flex;
-    font-family: 'Roboto';
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 16px;
     color: #ff6b01;
     margin-right: 8px;
     font-size: 12px;
 
     &::before {
       content: '';
-      display: block;
-      width: 2px;
-      height: 16px;
+      display: inline-block;
+      width: 1px;
+      height: 11px;
       margin-right: 5px;
       background-color: $accent-color;
     }
@@ -73,25 +66,7 @@
     font-size: 12px;
     padding-left: 10px;
     padding-right: 10px;
-    width: max-content;
     height: 16px;
     padding-top: 1px;
   }
-}
-
-.card__description {
-  margin-top: 8px;
-}
-
-.card__stats {
-  display: flex;
-  align-items: center;
-  margin-top: 5px;
-}
-
-.card__thumb {
-  height: 464px;
-  display: flex;
-  align-items: center;
-  background-color: #ff6b01;
 }

@@ -38,7 +38,7 @@
     height: 552px;
   }
   @media screen and (min-width: $desktop) {
-    margin-top: 7%;
+    margin-top: 184px;
     width: 814px;
     height: 558px;
   }
@@ -199,8 +199,6 @@
   border-radius: 5px;
   border: 1px solid $black-color;
   cursor: pointer;
-  transition: color $animation-duration $bezier-transition,
-    background-color $animation-duration $bezier-transition;
   &:hover,
   &:focus {
     background: $accent-color;

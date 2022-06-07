@@ -1,17 +1,15 @@
-import modalTpl from '../templates/modal.hbs';
-
-import MoviesAPI from './services/movies-api';
-const moviesAPI = new MoviesAPI();
 const refs = {
-  modal: document.querySelector('.js-modal'),
-  modalClose: document.querySelector('.js-modal-close'),
+  modal: document.querySelector('[data-modal]'),
+  modalOpen: document.querySelector('[data-modal-open]'),
+  modalClose: document.querySelector('[data-modal-close]'),
   backdrop: document.querySelector('.backdrop'),
 };
 
-export default function onOpenModal(id) {
+refs.modalOpen.addEventListener('click', onOpenModal);
+
+function onOpenModal() {
   window.addEventListener('keydown', onEscKeyPress);
   refs.modal.classList.remove('backdrop--is-hidden');
-  createModal(id);
 }
 
 refs.modalClose.addEventListener('click', onCloseModal);
@@ -32,12 +30,4 @@ function onEscKeyPress(e) {
   if (e.code === 'Escape') {
     onCloseModal();
   }
-}
-
-function createModal(movieId) {
-  moviesAPI.fetchMovieDetails(movieId).then(movieObj => {
-    const markup = modalTpl(movieObj);
-    refs.modal.innerHTML = '';
-    refs.modal.insertAdjacentHTML('afterbegin', markup);
-  });
 }
