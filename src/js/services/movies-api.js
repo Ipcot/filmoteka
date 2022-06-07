@@ -20,6 +20,10 @@ class MoviesAPI {
   }
 
   async fetchMoviesWithQuery(page = 1) {
+    if (this.#searchQuery === '') {
+      return;
+    }
+
     const pathname = '/search/movie';
     const params = new URLSearchParams({
       query: this.#searchQuery,
