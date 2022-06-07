@@ -16,7 +16,7 @@ class MoviesAPI {
       page,
     });
 
-    this.#fetchData(pathname, params);
+    return this.#fetchData(pathname, params);
   }
 
   async fetchMoviesWithQuery(page = 1) {

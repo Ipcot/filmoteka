@@ -1,72 +1,97 @@
 .card {
-    width: 100%;
-    margin-bottom: 20px;
+  width: 100%;
+  transition: transform $animation-duration $bezier-transition;
 
-    @media screen and (min-width: 768px) {
-        margin: 15px;
-        width: calc((100% - 2 * 30px) / 2);
+  &:hover {
+    transform: scale(1.023);
+  }
+
+  @media screen and (min-width: 768px) {
+    // width: calc((100% - 2 * 30px) / 2);
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: calc((100% - 2 * 16px) / 3);
+  }
+
+  &__item-list {
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: uppercase;
+
+    color: $black-color;
+  }
+
+  &__item {
+    color: #ff6b01;
+    margin-right: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: capitalize;
+
+    &:not(:last-child):after {
+      content: ',';
+      display: inline-block;
     }
+  }
 
-    @media screen and (min-width: 1200px) {
-        margin-right: 0px;
-        width: calc((100% - 3 * 30px) / 3);
+  &__year {
+    display: flex;
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    color: #ff6b01;
+    margin-right: 8px;
+    font-size: 12px;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 2px;
+      height: 16px;
+      margin-right: 5px;
+      background-color: $accent-color;
     }
+  }
 
-    &__item-list {
-        display: flex;
-        align-items: center;
-    }
+  &__rating {
+    color: $white-color;
+    background-color: #ff6b01;
+    border-radius: 5px;
+    font-size: 12px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: max-content;
+    height: 16px;
+    padding-top: 1px;
+  }
+}
 
-    &__title {
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 16px;
-        text-transform: uppercase;
+.card__description {
+  margin-top: 8px;
+}
 
-        color: $black-color;
-    }
+.card__stats {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
 
-    &__item {
-        color: #FF6B01;
-        margin-right: 5px;
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 16px;
-        text-transform: capitalize;
-
-        &:not(:last-child):after {
-            content: ",";
-            display: inline-block;
-        }
-    }
-
-    &__year {
-        color: #FF6B01;
-        margin-right: 8px;
-        font-size: 12px;
-
-        &::before {
-            content: "";
-            display: inline-block;
-            width: 1px;
-            height: 11px;
-            margin-right: 5px;
-            background-color: $accent-color;
-        }
-    }
-
-    &__rating {
-        color: $white-color;
-        background-color: #FF6B01;
-        border-radius: 5px;
-        font-size: 12px;
-        padding-left: 10px;
-        padding-right: 10px;
-        height: 16px;
-        padding-top: 1px;
-    }
+.card__thumb {
+  height: 464px;
+  display: flex;
+  align-items: center;
+  background-color: #ff6b01;
 }
