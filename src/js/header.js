@@ -1,4 +1,5 @@
 export const refs = {
+  body: document.querySelector('body'),
   conteinerHeader: document.querySelector('.header__container'),
   btnsLibs: document.querySelectorAll('.library-menu__button'),
   navMenu: document.querySelector('.navigation__menu'),
@@ -8,6 +9,8 @@ export const refs = {
   rootControl: document.querySelector('.search-conteiner'),
   searchForm: document.querySelector('[data-root="search-form"]'),
   refLibsSelect: document.querySelector('[data-root="library-buttons"]'),
+  switchTheme: document.querySelector('.switch-btn'),
+  // switchThemeLigth: document.querySelector('.switch-on'),
 };
 //------------removeActive------------//
 
@@ -117,3 +120,35 @@ if (initPage) {
   initHome();
   refs.homeLink.classList.add('active');
 }
+
+//---------------SWITCH THEME--------------//
+
+const { body, switchTheme } = refs;
+
+const theme = {
+  ORIGINALLY: 'originally-theme',
+  PATRIOTIC: 'patriotic-theme',
+};
+
+const { ORIGINALLY, PATRIOTIC } = theme;
+
+let currentTheme = localStorage.getItem('currentTheme');
+
+if (!currentTheme) {
+  currentTheme = ORIGINALLY;
+  localStorage.setItem('currentTheme', ORIGINALLY);
+} else {
+  body.classList.add(currentTheme);
+}
+
+// switchTheme.click = currentTheme === ORIGINALLY ? false : true;
+
+const changeTheme = () => {
+  body.classList.toggle(PATRIOTIC);
+  body.classList.toggle(ORIGINALLY);
+  switchTheme.classList.toggle('switch-on');
+
+  localStorage.setItem('currentTheme', body.classList.contains(PATRIOTIC) ? PATRIOTIC : ORIGINALLY);
+};
+
+switchTheme.addEventListener('click', changeTheme);
