@@ -152,3 +152,11 @@ instance.on('afterMove', event => {
 });
 
 window.addEventListener('resize', throttle(onResize, 200));
+
+export function resetTotalHits(hits) {
+  instance.setTotalItems(hits);
+}
+
+export function resetPage() {
+  instance.movePageTo(1);
+}
