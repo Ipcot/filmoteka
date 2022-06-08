@@ -1,0 +1,41 @@
+.movies {
+  padding-top: 32px;
+  padding-bottom: 60px;
+
+  @media (min-width: $tablet) {
+    // padding: 60px 0;
+  }
+
+  // @media (min-width: $phone) {
+  //   max-width: 320px;
+  // }
+
+  @media (min-width: $tablet) {
+    // padding-left: 32px;
+    // padding-right: 32px;
+    // max-width: 768px;
+  }
+
+  @media (min-width: $desktop) {
+    // max-width: 1024px;
+  }
+}
+
+.collection {
+  @media (min-width: $tablet) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  margin-bottom: -32px;
+}
+
+.collection__item {
+  margin-bottom: 32px;
+  cursor: pointer;
+
+  &:last-child {
+    margin-left: 16px;
+    margin-right: auto;
+  }
+}

@@ -16,10 +16,14 @@ class MoviesAPI {
       page,
     });
 
-    this.#fetchData(pathname, params);
+    return this.#fetchData(pathname, params);
   }
 
   async fetchMoviesWithQuery(page = 1) {
+    if (this.#searchQuery === '') {
+      return;
+    }
+
     const pathname = '/search/movie';
     const params = new URLSearchParams({
       query: this.#searchQuery,

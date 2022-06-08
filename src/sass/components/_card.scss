@@ -1,72 +1,72 @@
 .card {
-    width: 100%;
-    margin-bottom: 20px;
+  width: 100%;
+  margin-bottom: 20px;
 
-    @media screen and (min-width: 768px) {
-        margin: 15px;
-        width: calc((100% - 2 * 30px) / 2);
+  @media screen and (min-width: 768px) {
+    margin: 15px;
+    width: calc((100% - 2 * 30px) / 2);
+  }
+
+  @media screen and (min-width: 1200px) {
+    margin-right: 0px;
+    width: calc((100% - 3 * 30px) / 3);
+  }
+
+  &__item-list {
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: uppercase;
+
+    color: $black-color;
+  }
+
+  &__item {
+    color: #ff6b01;
+    margin-right: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: capitalize;
+
+    &:not(:last-child):after {
+      content: ',';
+      display: inline-block;
     }
+  }
 
-    @media screen and (min-width: 1200px) {
-        margin-right: 0px;
-        width: calc((100% - 3 * 30px) / 3);
+  &__year {
+    color: #ff6b01;
+    margin-right: 8px;
+    font-size: 12px;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 1px;
+      height: 11px;
+      margin-right: 5px;
+      background-color: $accent-color;
     }
+  }
 
-    &__item-list {
-        display: flex;
-        align-items: center;
-    }
-
-    &__title {
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 16px;
-        text-transform: uppercase;
-
-        color: $black-color;
-    }
-
-    &__item {
-        color: #FF6B01;
-        margin-right: 5px;
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 16px;
-        text-transform: capitalize;
-
-        &:not(:last-child):after {
-            content: ",";
-            display: inline-block;
-        }
-    }
-
-    &__year {
-        color: #FF6B01;
-        margin-right: 8px;
-        font-size: 12px;
-
-        &::before {
-            content: "";
-            display: inline-block;
-            width: 1px;
-            height: 11px;
-            margin-right: 5px;
-            background-color: $accent-color;
-        }
-    }
-
-    &__rating {
-        color: $white-color;
-        background-color: #FF6B01;
-        border-radius: 5px;
-        font-size: 12px;
-        padding-left: 10px;
-        padding-right: 10px;
-        height: 16px;
-        padding-top: 1px;
-    }
+  &__rating {
+    color: $white-color;
+    background-color: #ff6b01;
+    border-radius: 5px;
+    font-size: 12px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 16px;
+    padding-top: 1px;
+  }
 }
