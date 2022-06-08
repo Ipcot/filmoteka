@@ -1,107 +1,75 @@
 import MoviesAPI from './movies-api';
 import renderMarkup from '../utils/render-markup';
-const myLibraryWatched = document.querySelector('.btn-library-watched');
-const myLibraryQueue = document.querySelector('.btn-library-queue');
-const myLibraryBtn = document.querySelector('[data-page="library"]');
-const movieObjs = [];
+ import Notiflix from 'notiflix';
+
 const moviesAPI = new MoviesAPI();
-const Array = [338953, 361743, 675353, 831946, 526896];
 
-export default async function renderLibraryMarkup(movieIds) {
-  await movieIds.forEach(async movieId => {
-    fetchMovie(movieId);
-  });
+const LS_LIB_LAST = 'libraryLast';
+const LS_QUEUE = 'queue';
+const LS_WATCHED = 'watched';
 
-  async function fetchMovie(id) {
-    moviesAPI.fetchMovieDetails(id).then(data => {
-      console.log(data);
-      movieObjs.push(data);
-    });
-  }
-  renderMarkup(movieObjs);
-}
+let movieObjs = [];
 
-myLibraryBtn.addEventListener('click', onMyLibraryClick);
-myLibraryQueue.addEventListener('click', () => renderLsData('queue'));
-myLibraryWatched.addEventListener('click', () => renderLsData('watched'));
+const refs = {
+  watchedBtn: document.querySelector('.btn-library-watched'),
+  queueBtn: document.querySelector('.btn-library-queue'),
+  libraryBtn: document.querySelector('[data-page="library"]'),
+};
+
+refs.libraryBtn.addEventListener('click', onMyLibraryClick);
+refs.queueBtn.addEventListener('click', onQueueBtnClick);
+refs.watchedBtn.addEventListener('click', onWatchedBtnClick);
 
 function onMyLibraryClick() {
-  renderLsData('watched');
+  const libraryLast = localStorage.getItem(LS_LIB_LAST);
+
+  if (!libraryLast) {
+    return renderLsData(LS_WATCHED);
+  }
+
+  renderLsData(libraryLast);
+}
+
+function onQueueBtnClick() {
+  renderLsData(LS_QUEUE);
+  localStorage.setItem(LS_LIB_LAST, LS_QUEUE);
+}
+
+function onWatchedBtnClick() {
+  renderLsData(LS_WATCHED);
+  localStorage.setItem(LS_LIB_LAST, LS_WATCHED);
+}
+
+function renderLibraryMarkup(movieIds) {
+  movieIds.forEach((movieId, i) => {
+    if (i === movieIds.length - 1) {
+      fetchMovie(movieId, true);
+      return ;
+    }
+
+    if (i === 0) {
+      movieObjs = [];
+    
+    }
+
+    fetchMovie(movieId);
+  });
+}
+
+function fetchMovie(id, render = false) {
+  moviesAPI.fetchMovieDetails(id).then(data => {
+    movieObjs.push(data);
+    render && renderMarkup(movieObjs, true);
+  });
 }
 
 function renderLsData(key) {
-  const lsqData = localStorage.getItem(key);
-  if (!lsqData) {
-    return;
+  const lsData = localStorage.getItem(key);
+  if (!lsData) {
+    return Notiflix.Notify.failure('No watched movies in your library.');
   }
-  const lsqDataParsed = JSON.parse(lsqData);
+  const lsDataParsed = JSON.parse(lsData);
 
-  renderLibraryMarkup(lsqDataParsed);
+  renderLibraryMarkup(lsDataParsed);
+  Notiflix.Notify.info(`Hooray! You have ${lsData.length} movies in collection.`);
 }
-
-// moviesAPI
-//   .fetchMovieDetails(movieId)
-//     .map(({ title, release_date, poster_path, id, vote_average, genres }) => {
-//       const movie_genres = genres
-//         .map(genre => genre.name)
-//         .slice(0, 2)
-//         .join(', ');
-//       const releaseYear = new Date(release_date).getFullYear();
-//       let poster = emptyImg;
-//       if (poster_path) {
-//         poster = `https://image.tmdb.org/t/p/w300${poster_path}`;
-//       }
-//       return { title, releaseYear, poster, id, vote_average, movie_genres };
-//     });
-//   const markup = normalizedMovies
-//     .map(({ title, releaseYear, poster, id, vote_average, movie_genres }) => {
-//       return `<div class="movies-card">
-//             <img class="movies" src="https://image.tmdb.org/t/p/w300${poster}" data-id="${id}">
-//             <p class="movies_name">
-//               ${title}
-//               <div class="movies_info">
-//                 <span class="genres">${movie_genres} | ${releaseYear}</span>
-//                 <span class="rating">${vote_average}</span>
-//               </div>
-//             </p></div>`;
-//     })
-//     .join('');
-//   libraryGall.innerHTML = markup;
-// }
-
-// // import emptyImg from '../../img/blank.jpg';
-// // import MoviesAPI from './services/movies-api';
-
-// // const moviesAPI = new MoviesAPI();
-// export default function renderLibraryMarkup(movArr) {
-//   // const libraryGall = document.querySelector('.film-container');
-
-//   const normalizedMovies = movArr.map(
-//     ({ title, release_date, poster_path, id, vote_average, genres }) => {
-//       const movie_genres = genres
-//         .map(genre => genre.name)
-//         .slice(0, 2)
-//         .join(', ');
-//       const releaseYear = new Date(release_date).getFullYear();
-//       let poster = emptyImg;
-//       if (poster_path) {
-//         poster = `https://image.tmdb.org/t/p/w300${poster_path}`;
-//       }
-//       return { title, releaseYear, poster, id, vote_average, movie_genres };
-//     },
-//   );
-//   const markup = normalizedMovies
-//     .map(({ title, releaseYear, poster, id, vote_average, movie_genres }) => {
-//       return `<div class="movies-card">
-//       <img class="movies" src="https://image.tmdb.org/t/p/w300${poster}" data-id="${id}">
-//       <p class="movies_name">
-//         ${title}
-//         <div class="movies_info">
-//           <span class="genres">${movie_genres} | ${releaseYear}</span>
-//           <span class="rating">${vote_average}</span>
-//         </div>
-//       </p></div>`;
-//     })
-//     .join('');
-//   libraryGall.insertAdjacentHTML('beforeend', markup);
-// }
