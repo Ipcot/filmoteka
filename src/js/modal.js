@@ -4,18 +4,20 @@ import MoviesAPI from './services/movies-api';
 const moviesAPI = new MoviesAPI();
 const refs = {
   modal: document.querySelector('.js-modal'),
-  backdrop: document.querySelector('.backdrop'),
+  backdrop: document.querySelector('.js-backdrop'),
+  modalClose: document.querySelector('.js-modal-close'),
 };
 
 export default function onOpenModal(id) {
   window.addEventListener('keydown', onEscKeyPress);
-  refs.modal.classList.remove('backdrop--is-hidden');
+  refs.backdrop.classList.remove('backdrop--is-hidden');
   createModal(id);
+  refs.modalClose.addEventListener('click', onCloseModal);
 }
 
 function onCloseModal() {
   window.removeEventListener('keydown', onEscKeyPress);
-  refs.modal.classList.add('backdrop--is-hidden');
+  refs.backdrop.classList.add('backdrop--is-hidden');
 }
 
 refs.backdrop.addEventListener('click', onBackdropClick);
@@ -34,9 +36,6 @@ function onEscKeyPress(e) {
 function createModal(movieId) {
   moviesAPI.fetchMovieDetails(movieId).then(movieObj => {
     const markup = modalTpl(movieObj);
-    refs.modal.innerHTML = '';
-    refs.modal.insertAdjacentHTML('afterbegin', markup);
-    const modalClose = document.querySelector('.js-modal-close');
-    modalClose.addEventListener('click', onCloseModal);
+    refs.modal.innerHTML = markup;
   });
 }
