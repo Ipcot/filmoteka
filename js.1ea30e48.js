@@ -125,7 +125,9 @@ var t,e=arguments[3];!function(e,i){"function"==typeof t&&t.amd?t([],function(){
 var t=document.querySelector(".stt"),n=window.innerHeight,e=function(){document.addEventListener("scroll",function(e){n<=window.scrollY?t.classList.add("stt__active"):e.target.scrollingElement.scrollTop<=n&&(t.classList.remove("stt__active"),t.style.pointerEvents="auto")})},o=function(){t.addEventListener("click",function(){var n=window.scrollY,e=0,o=n;t.style.pointerEvents="none";requestAnimationFrame(function t(){o-=5*(e+=1),window.scrollTo(0,o),o>0&&requestAnimationFrame(t)})})},i=function(){e(),o()};document.addEventListener("DOMContentLoaded",i);
 },{}],"KRAA":[function(require,module,exports) {
 "use strict";var t=e(require("../modal"));function e(t){return t&&t.__esModule?t:{default:t}}const c={collection:document.querySelector(".js-collection")};function r(e){if(e.target===e.currentTarget)return;const c=e.target.dataset.id;(0,t.default)(c)}c.collection.addEventListener("click",r);
-},{"../modal":"RSqK"}],"QvaY":[function(require,module,exports) {
-"use strict";require("./services/api-demo"),require("./header"),require("./services/render-library-markup"),require("./modal"),require("./pagination"),require("./footer"),require("./services/back-to-top"),require("./show-movies/get-popular"),require("./show-movies/delegation");
-},{"./services/api-demo":"jcdj","./header":"cGsR","./services/render-library-markup":"mcNe","./modal":"RSqK","./pagination":"o8lo","./footer":"b5Ik","./services/back-to-top":"trFs","./show-movies/get-popular":"F3Jt","./show-movies/delegation":"KRAA"}]},{},["QvaY"], null)
-//# sourceMappingURL=/filmoteka/js.dff3ef79.js.map
+},{"../modal":"RSqK"}],"vQE2":[function(require,module,exports) {
+function e(){return new Promise((e,t)=>{setTimeout(e,600)})}e().then(()=>{let e=document.getElementById("preloader");e.classList.add("hidden"),e.classList.remove("visible")});
+},{}],"QvaY":[function(require,module,exports) {
+"use strict";require("./services/api-demo"),require("./header"),require("./services/render-library-markup"),require("./modal"),require("./pagination"),require("./footer"),require("./services/back-to-top"),require("./show-movies/get-popular"),require("./show-movies/delegation"),require("./loader");
+},{"./services/api-demo":"jcdj","./header":"cGsR","./services/render-library-markup":"mcNe","./modal":"RSqK","./pagination":"o8lo","./footer":"b5Ik","./services/back-to-top":"trFs","./show-movies/get-popular":"F3Jt","./show-movies/delegation":"KRAA","./loader":"vQE2"}]},{},["QvaY"], null)
+//# sourceMappingURL=/filmoteka/js.1ea30e48.js.map
