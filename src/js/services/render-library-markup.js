@@ -1,36 +1,75 @@
-import emptyImg from '../../img/blank.jpg';
-// import MoviesAPI from './services/movies-api';
+import MoviesAPI from './movies-api';
+import renderMarkup from '../utils/render-markup';
+ import Notiflix from 'notiflix';
 
-// const moviesAPI = new MoviesAPI();
-export default function renderLibraryMarkup(movArr) {
-  const libraryGall = document.querySelector('.film-container');
+const moviesAPI = new MoviesAPI();
 
-  const normalizedMovies = movArr.map(
-    ({ title, release_date, poster_path, id, vote_average, genres }) => {
-      const movie_genres = genres
-        .map(genre => genre.name)
-        .slice(0, 2)
-        .join(', ');
-      const releaseYear = new Date(release_date).getFullYear();
-      let poster = emptyImg;
-      if (poster_path) {
-        poster = `https://image.tmdb.org/t/p/w300${poster_path}`;
-      }
-      return { title, releaseYear, poster, id, vote_average, movie_genres };
-    },
-  );
-  const markup = normalizedMovies
-    .map(({ title, releaseYear, poster, id, vote_average, movie_genres }) => {
-      return `<div class="movies-card">
-      <img class="movies" src="https://image.tmdb.org/t/p/w300${poster}" data-id="${id}">
-      <p class="movies_name">
-        ${title}
-        <div class="movies_info">
-          <span class="genres">${movie_genres} | ${releaseYear}</span>
-          <span class="rating">${vote_average}</span>
-        </div>
-      </p></div>`;
-    })
-    .join('');
-  libraryGall.insertAdjacentHTML('beforeend', markup);
+const LS_LIB_LAST = 'libraryLast';
+const LS_QUEUE = 'queue';
+const LS_WATCHED = 'watched';
+
+let movieObjs = [];
+
+const refs = {
+  watchedBtn: document.querySelector('.btn-library-watched'),
+  queueBtn: document.querySelector('.btn-library-queue'),
+  libraryBtn: document.querySelector('[data-page="library"]'),
+};
+
+refs.libraryBtn.addEventListener('click', onMyLibraryClick);
+refs.queueBtn.addEventListener('click', onQueueBtnClick);
+refs.watchedBtn.addEventListener('click', onWatchedBtnClick);
+
+function onMyLibraryClick() {
+  const libraryLast = localStorage.getItem(LS_LIB_LAST);
+
+  if (!libraryLast) {
+    return renderLsData(LS_WATCHED);
+  }
+
+  renderLsData(libraryLast);
+}
+
+function onQueueBtnClick() {
+  renderLsData(LS_QUEUE);
+  localStorage.setItem(LS_LIB_LAST, LS_QUEUE);
+}
+
+function onWatchedBtnClick() {
+  renderLsData(LS_WATCHED);
+  localStorage.setItem(LS_LIB_LAST, LS_WATCHED);
+}
+
+function renderLibraryMarkup(movieIds) {
+  movieIds.forEach((movieId, i) => {
+    if (i === movieIds.length - 1) {
+      fetchMovie(movieId, true);
+      return ;
+    }
+
+    if (i === 0) {
+      movieObjs = [];
+    
+    }
+
+    fetchMovie(movieId);
+  });
+}
+
+function fetchMovie(id, render = false) {
+  moviesAPI.fetchMovieDetails(id).then(data => {
+    movieObjs.push(data);
+    render && renderMarkup(movieObjs, true);
+  });
+}
+
+function renderLsData(key) {
+  const lsData = localStorage.getItem(key);
+  if (!lsData) {
+    return Notiflix.Notify.failure('No watched movies in your library.');
+  }
+  const lsDataParsed = JSON.parse(lsData);
+
+  renderLibraryMarkup(lsDataParsed);
+  Notiflix.Notify.info(`Hooray! You have ${lsData.length} movies in collection.`);
 }
