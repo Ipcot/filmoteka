@@ -6,15 +6,16 @@ const imgResource = 'https://image.tmdb.org/t/p/w300';
 
 const moviesContainer = document.querySelector('.js-collection');
 
-function renderMarkup(list) {
-  const markup = list.map(item => moviesPageTpl(transformMovieData(item))).join('');
+function renderMarkup(list, isLibrary = false) {
+  const markup = list.map(item => moviesPageTpl(transformMovieData(item, isLibrary))).join('');
   moviesContainer.innerHTML = markup;
 }
 
-function transformMovieData(movie) {
-  const { title, release_date, poster_path, vote_average, genre_ids, id } = movie;
+function transformMovieData(movie, isLibrary) {
+  const { title, release_date, poster_path, vote_average, id } = movie;
 
-  const genres = getGenreNames(genre_ids);
+  const genres = isLibrary ? movie.genres.map(m => m.name) : getGenreNames(movie.genre_ids);
+
   const year = release_date.slice(0, 4);
 
   return {

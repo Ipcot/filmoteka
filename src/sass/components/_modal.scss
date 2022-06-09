@@ -19,12 +19,14 @@
     pointer-events: none;
     transition: opacity $animation-duration $bezier-transition;
   }
+        @media screen and (min-width: $tablet) {
+          overflow: none;
+        }
 }
 
 .modal {
   margin: 0 auto;
-  width: 280px;
-  max-height: 940px;
+  width: 292px;
   background-color: $white-color;
   opacity: 1;
   transform: scale(1);
