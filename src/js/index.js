@@ -1,4 +1,5 @@
 // import './services/api-demo';
+import './loader';
 import './header';
 import './services/localStorage';
 import './services/render-library-markup';
