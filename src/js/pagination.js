@@ -90,7 +90,7 @@ const options = {
   },
 };
 
-const instance = new Pagination(container, options);
+let instance;
 
 function onResize() {
   matchStylesToMedia();
@@ -117,8 +117,7 @@ function matchStylesToMedia() {
   }
 }
 
-export default function onPageChange(currentPage = 1) {
-  showMovies(currentPage);
+function onPageChange(currentPage = 1) {
   let firstBtn = document.querySelector('.pagination__move-btn-first');
   let lastBtn = document.querySelector('.pagination__move-btn-last');
 
@@ -141,22 +140,23 @@ export default function onPageChange(currentPage = 1) {
   }
 }
 
-instance.getCurrentPage();
+export function resetTotalHits(hits) {
+  createPagination(hits);
+}
 
-onPageChange();
+function createPagination(totalItems = 500) {
+  options.totalItems = totalItems;
+  container.innerHTML = '';
+  instance = new Pagination(container, options);
 
-instance.on('afterMove', event => {
-  const currentPage = event.page;
+  onPageChange();
 
-  onPageChange(currentPage);
-});
+  instance.on('afterMove', event => {
+    const currentPage = event.page;
+
+    onPageChange(currentPage);
+    showMovies(currentPage);
+  });
+}
 
 window.addEventListener('resize', throttle(onResize, 200));
-
-export function resetTotalHits(hits) {
-  instance.setTotalItems(hits);
-}
-
-export function resetPage() {
-  instance.movePageTo(1);
-}

@@ -1,13 +1,13 @@
- import './services/api-demo';
 import './header';
-import './services/render-library-markup';
+import './footer';
 import './modal';
 import './pagination';
 
-import './footer';
-
+import './services/render-library-markup';
 import './services/back-to-top';
 
 import './show-movies/get-popular';
 import './show-movies/delegation';
+
 import './loader';
+

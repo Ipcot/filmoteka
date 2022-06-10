@@ -99,7 +99,7 @@ const handleSearch = e => {
 
   searchMovies(query);
 
-  e.target.reset();
+  // e.target.reset();
 };
 
 refs.searchForm.addEventListener('submit', handleSearch);
