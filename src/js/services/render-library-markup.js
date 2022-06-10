@@ -1,6 +1,7 @@
 import MoviesAPI from './movies-api';
+import { renderLibraryItem } from '../utils/render-markup';
 import renderMarkup from '../utils/render-markup';
- import Notiflix from 'notiflix';
+import Notiflix from 'notiflix';
 
 const moviesAPI = new MoviesAPI();
 
@@ -8,20 +9,26 @@ const LS_LIB_LAST = 'libraryLast';
 const LS_QUEUE = 'queue';
 const LS_WATCHED = 'watched';
 
-let movieObjs = [];
-
 const refs = {
   watchedBtn: document.querySelector('.btn-library-watched'),
   queueBtn: document.querySelector('.btn-library-queue'),
   libraryBtn: document.querySelector('[data-page="library"]'),
 };
 
-refs.libraryBtn.addEventListener('click', onMyLibraryClick);
+// refs.libraryBtn.addEventListener('click', onGoToMyLibrary);
 refs.queueBtn.addEventListener('click', onQueueBtnClick);
 refs.watchedBtn.addEventListener('click', onWatchedBtnClick);
 
-function onMyLibraryClick() {
+function onGoToMyLibrary() {
   const libraryLast = localStorage.getItem(LS_LIB_LAST);
+
+  if (libraryLast === LS_QUEUE) {
+    refs.queueBtn.classList.add('is-active');
+    refs.watchedBtn.classList.remove('is-active');
+  } else {
+    refs.watchedBtn.classList.add('is-active');
+    refs.queueBtn.classList.remove('is-active');
+  }
 
   if (!libraryLast) {
     return renderLsData(LS_WATCHED);
@@ -41,35 +48,28 @@ function onWatchedBtnClick() {
 }
 
 function renderLibraryMarkup(movieIds) {
-  movieIds.forEach((movieId, i) => {
-    if (i === movieIds.length - 1) {
-      fetchMovie(movieId, true);
-      return ;
-    }
+  renderMarkup([]);
 
-    if (i === 0) {
-      movieObjs = [];
-    
-    }
-
-    fetchMovie(movieId);
-  });
-}
-
-function fetchMovie(id, render = false) {
-  moviesAPI.fetchMovieDetails(id).then(data => {
-    movieObjs.push(data);
-    render && renderMarkup(movieObjs, true);
+  movieIds.forEach(movieId => {
+    moviesAPI.fetchMovieDetails(movieId).then(data => {
+      renderLibraryItem(data);
+    });
   });
 }
 
 function renderLsData(key) {
   const lsData = localStorage.getItem(key);
+  const place = key === LS_QUEUE ? 'the queue' : 'watched';
+
   if (!lsData) {
-    return Notiflix.Notify.failure('No watched movies in your library.');
+    Notiflix.Notify.warning(`No movies added to ${place}.`);
+    return renderMarkup([]);
   }
+
   const lsDataParsed = JSON.parse(lsData);
 
   renderLibraryMarkup(lsDataParsed);
-  Notiflix.Notify.info(`Hooray! You have ${lsData.length} movies in collection.`);
+  Notiflix.Notify.info(`You have ${lsDataParsed.length} movies in ${place}.`);
 }
+
+export default onGoToMyLibrary;

@@ -1,3 +1,4 @@
+import onGoToMyLibrary from './services/render-library-markup';
 import searchMovies from './show-movies/search-movies';
 
 export const refs = {
@@ -46,6 +47,7 @@ const initLibrary = () => {
   localStorage.setItem('page', 'library');
 
   showLibSelector();
+  onGoToMyLibrary();
 };
 
 // -----------initHome-----------//
