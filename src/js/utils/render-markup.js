@@ -6,15 +6,20 @@ const imgResource = 'https://image.tmdb.org/t/p/w300';
 
 const moviesContainer = document.querySelector('.js-collection');
 
-function renderMarkup(list, isLibrary = false) {
+function renderMarkup(list) {
   const markup = list.map(item => moviesPageTpl(transformMovieData(item, isLibrary))).join('');
   moviesContainer.innerHTML = markup;
+}
+
+export function renderLibraryItem(item) {
+  const markup = moviesPageTpl(transformMovieData(item, true));
+  moviesContainer.insertAdjacentHTML('beforeend', markup);
 }
 
 function transformMovieData(movie, isLibrary) {
   const { title, release_date, poster_path, vote_average, id } = movie;
 
-  const genres = isLibrary ? movie.genres.map(m => m.name) : getGenreNames(movie.genre_ids);
+  const genres = isLibrary ? transformLibGenres(movie.genres) : getGenreNames(movie.genre_ids);
 
   const year = release_date.slice(0, 4);
 
@@ -28,12 +33,21 @@ function transformMovieData(movie, isLibrary) {
   };
 }
 
+function transformLibGenres(genresObjs) {
+  const genres = genresObjs.map(genre => genre.name);
+  return sliceGenresList(genres);
+}
+
 function getGenreNames(genreIds) {
   const genres = genreIds.map(genreId => {
     const currentGenre = genresList.find(genre => genre.id === genreId);
     return currentGenre.name;
   });
 
+  return sliceGenresList(genres);
+}
+
+function sliceGenresList(genres) {
   if (genres.length <= 3) {
     return genres;
   }
