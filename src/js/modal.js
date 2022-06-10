@@ -1,3 +1,4 @@
+import showSpinner from '../js/utils/spinner';
 import modalTpl from '../templates/modal.hbs';
 
 import MoviesAPI from './services/movies-api';
@@ -9,6 +10,7 @@ const refs = {
 };
 
 export default function onOpenModal(id) {
+  showSpinner(true);
   window.addEventListener('keydown', onEscKeyPress);
   refs.backdrop.classList.remove('backdrop--is-hidden');
   createModal(id);
@@ -18,6 +20,7 @@ export default function onOpenModal(id) {
 function onCloseModal() {
   window.removeEventListener('keydown', onEscKeyPress);
   refs.backdrop.classList.add('backdrop--is-hidden');
+  refs.modal.innerHTML = '';
 }
 
 refs.backdrop.addEventListener('click', onBackdropClick);
@@ -34,8 +37,11 @@ function onEscKeyPress(e) {
 }
 
 function createModal(movieId) {
-  moviesAPI.fetchMovieDetails(movieId).then(movieObj => {
-    const markup = modalTpl(movieObj);
-    refs.modal.innerHTML = markup;
-  });
+  moviesAPI
+    .fetchMovieDetails(movieId)
+    .then(movieObj => {
+      const markup = modalTpl(movieObj);
+      refs.modal.innerHTML = markup;
+    })
+    .finally(() => showSpinner(false));
 }
