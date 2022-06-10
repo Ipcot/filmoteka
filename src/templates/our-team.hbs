@@ -1,0 +1,31 @@
+  <div class="backdrop modal-team">
+    <div class="backdrop-container-team modal-team ">
+      <div class="backdrop-container-team__content-team">
+        <button class="modal-content__close-btn-team " type="button">
+          <svg class="modal-content__icon-close-team" width="30px" height="30px">
+            <use href="./img/icons/sprite.svg#icon-close"></use>
+          </svg>
+        </button>
+    <div class="team-container">
+      <h2 class="our-team-title">Our team</h2>
+        <ul class="team-list">
+            {{#each this}}
+            <li class="team-list__item">
+                <div class="team-img"><img src="{{img}}" alt="{{name}}" /></div>
+                <div class="team-list__card">
+                <div class="team-info">
+                    <p lang="en" class="team-list__title-developer">{{name}}</p>
+                    <p lang="en" class="team-list__position-developer">{{position}}</p>
+                </div>
+                    <a class="git-link" href="{{gitLink}}" target="_blank">
+                    </a>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+    </div>
+ </div>
+ </div>
+ </div>
+ 

@@ -80,7 +80,10 @@
         }
     }
 }
-
+.img{
+    width: 150px;
+    height: 180px;
+}
 .team-img {
     width: 150px;
     height: 200px;
@@ -149,6 +152,7 @@
 }
 
 .modal-content__icon-close-team {
+    background-color: #7b0562;
     stroke: #000000;
     transition-property: background-color, color, box-shadow;
     transition-duration: 250ms;
@@ -170,7 +174,11 @@
 }
 
 .git-link {
+    border-radius: 50px;
+    background-color: #7b0562;
     display: block;
+    width: 30px;
+    height: 30px;
 }
 
 .team-info {
