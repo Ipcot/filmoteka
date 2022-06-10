@@ -63,11 +63,6 @@
   }
 }
 
-body.patriotic-theme {
-  background: linear-gradient(135deg, rgb(94, 195, 240), rgb(240, 229, 85));
-  color: $white-color;
-}
-
 .logo {
   display: flex;
   align-items: center;
@@ -86,6 +81,16 @@ body.patriotic-theme {
       display: inline-flex;
     }
   }
+}
+
+body.patriotic-theme {
+  background: linear-gradient(135deg, rgb(94, 195, 240), rgb(240, 229, 85));
+}
+.patriotic__blu {
+  @include font(500, 30px, 35px, rgb(94, 195, 240), 0);
+}
+.patriotic__yellow {
+  @include font(500, 30px, 35px, rgb(240, 229, 85), 0);
 }
 
 .navigation {
