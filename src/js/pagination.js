@@ -23,8 +23,6 @@ const options = {
       let customBtnClass = '';
       let value = '';
 
-      let orderText = '';
-
       if (type.type === 'first') {
         value = '1';
         customBtnClass = 'pagination__move-btn-first';
@@ -52,14 +50,11 @@ const options = {
       let customBtnClass = '';
       let value = '';
 
-      let orderText = '';
-
       if (type.type === 'first') {
         value = '1';
         customBtnClass = 'pagination__move-btn-first';
       } else if (type.type === 'last') {
         value = Math.ceil(options.totalItems / options.itemsPerPage);
-        console.log(value);
         customBtnClass = 'pagination__move-btn-last';
       } else if (type.type === 'prev') {
         customIconClass = 'pagination__icon-left';
@@ -127,6 +122,12 @@ function onPageChange(currentPage = 1) {
 
   onResize();
 
+  if (totalPages <= 1) {
+    container.classList.add('pagination__move-btn--hidden');
+  } else {
+    container.classList.remove('pagination__move-btn--hidden');
+  }
+
   if (currentPage <= options.visiblePages) {
     firstBtn.classList.add('pagination__move-btn--hidden');
   } else {
@@ -138,6 +139,7 @@ function onPageChange(currentPage = 1) {
   } else {
     lastBtn.classList.remove('pagination__move-btn--hidden');
   }
+
 }
 
 export function resetTotalHits(hits) {
