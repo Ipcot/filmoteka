@@ -8,3 +8,6 @@ import './services/back-to-top';
 
 import './show-movies/get-popular';
 import './show-movies/delegation';
+
+import './loader';
+
