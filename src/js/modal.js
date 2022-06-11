@@ -1,5 +1,6 @@
 import showSpinner from '../js/utils/spinner';
 import modalTpl from '../templates/modal.hbs';
+import onBtnWatchedClick from './add-watched';
 
 import MoviesAPI from './services/movies-api';
 const moviesAPI = new MoviesAPI();
@@ -43,5 +44,8 @@ function createModal(movieId) {
       const markup = modalTpl(movieObj);
       refs.modal.innerHTML = markup;
     })
-    .finally(() => showSpinner(false));
+    .finally(() => {
+      showSpinner(false);
+      document.querySelector('.js-modal-watched').addEventListener('click', onBtnWatchedClick);
+    });
 }
