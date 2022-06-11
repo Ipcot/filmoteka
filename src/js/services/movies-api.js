@@ -5,15 +5,31 @@ const API_KEY = '0d3c19a06e728eab3e881b744ba766c6';
 
 class MoviesAPI {
   #searchQuery;
+  #genres;
 
   constructor() {
     this.#searchQuery = '';
+    this.#genres = '';
   }
 
   async fetchPopularMovies(page = 1) {
     const pathname = '/trending/movie/week';
     const params = new URLSearchParams({
       page,
+    });
+
+    return this.#fetchData(pathname, params);
+  }
+
+  setFilter(genreIds) {
+    this.#genres = genreIds.join(',');
+  }
+
+  async fetchFiteredMovies(page = 1) {
+    const pathname = '/discover/movie';
+    const params = new URLSearchParams({
+      page,
+      with_genres: this.#genres,
     });
 
     return this.#fetchData(pathname, params);
