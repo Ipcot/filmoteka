@@ -3,6 +3,7 @@ import modalTpl from '../templates/modal.hbs';
 
 import MoviesAPI from './services/movies-api';
 const moviesAPI = new MoviesAPI();
+
 const refs = {
   modal: document.querySelector('.js-modal'),
   backdrop: document.querySelector('.js-backdrop'),
