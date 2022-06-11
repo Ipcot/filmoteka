@@ -15,7 +15,6 @@ const refs = {
   libraryBtn: document.querySelector('[data-page="library"]'),
 };
 
-// refs.libraryBtn.addEventListener('click', onGoToMyLibrary);
 refs.queueBtn.addEventListener('click', onQueueBtnClick);
 refs.watchedBtn.addEventListener('click', onWatchedBtnClick);
 

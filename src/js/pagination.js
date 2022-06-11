@@ -139,7 +139,6 @@ function onPageChange(currentPage = 1) {
   } else {
     lastBtn.classList.remove('pagination__move-btn--hidden');
   }
-
 }
 
 export function resetTotalHits(hits) {
@@ -159,6 +158,14 @@ function createPagination(totalItems = 500) {
     onPageChange(currentPage);
     showMovies(currentPage);
   });
+}
+
+export function showPagination(isShown) {
+  if (isShown) {
+    return container.classList.remove('pagination--hidden');
+  }
+
+  container.classList.add('pagination--hidden');
 }
 
 window.addEventListener('resize', throttle(onResize, 200));

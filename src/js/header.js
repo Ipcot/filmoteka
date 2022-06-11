@@ -1,3 +1,4 @@
+import { showPagination } from './pagination';
 import onGoToMyLibrary from './services/render-library-markup';
 import searchMovies from './show-movies/search-movies';
 
@@ -44,6 +45,7 @@ const showSearchForm = () => {
 
 const initLibrary = () => {
   const { conteinerHeader } = refs;
+  showPagination(false);
 
   conteinerHeader.classList.add('header__container_library');
   conteinerHeader.classList.remove('header__container_home');
@@ -57,6 +59,7 @@ const initLibrary = () => {
 // -----------initHome-----------//
 
 const initHome = () => {
+  showPagination(true);
   const { conteinerHeader } = refs;
 
   conteinerHeader.classList.remove('header__container_library');

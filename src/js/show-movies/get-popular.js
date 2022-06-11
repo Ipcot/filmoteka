@@ -6,8 +6,15 @@ import showSpinner from '../utils/spinner';
 
 const moviesAPI = new MoviesAPI();
 
+const form = document.querySelector('#movie-search');
 const homeBtn = document.querySelectorAll('[data-page="home"]');
-homeBtn.forEach(btn => btn.addEventListener('click', () => getPopular(1)));
+
+homeBtn.forEach(btn =>
+  btn.addEventListener('click', () => {
+    getPopular(1);
+    form.removeAttribute('data-touched');
+  }),
+);
 
 const getPopular = (page = 1) => {
   showSpinner(true);
