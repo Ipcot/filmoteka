@@ -7,7 +7,7 @@ const imgResource = 'https://image.tmdb.org/t/p/w300';
 const moviesContainer = document.querySelector('.js-collection');
 
 function renderMarkup(list) {
-  const markup = list.map(item => moviesPageTpl(transformMovieData(item, isLibrary))).join('');
+  const markup = list.map(item => moviesPageTpl(transformMovieData(item))).join('');
   moviesContainer.innerHTML = markup;
 }
 
