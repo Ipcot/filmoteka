@@ -11,12 +11,16 @@ html {
   -webkit-text-size-adjust: 100%;
   -moz-tab-size: 4;
   tab-size: 4;
+  height: 100%;
 }
 
 body {
   margin: 0;
   font-family: Roboto, sans-serif;
   color: #000;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 hr {
