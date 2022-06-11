@@ -7,7 +7,7 @@ const refs = {
 };
 
 refs.openMenuBtn.addEventListener('click', renderOurTEam);
-refs.closeMenuBtn.addEventListener('click');
+//refs.closeMenuBtn.addEventListener('click');
 
 function renderOurTEam() {
   const markup = teamTemplates(members);
