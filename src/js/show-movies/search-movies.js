@@ -5,7 +5,10 @@ import showSpinner from '../utils/spinner';
 
 const moviesAPI = new MoviesAPI();
 
+const form = document.querySelector('#movie-search');
+
 const searchMovies = query => {
+  form.setAttribute('data-touched', 'true');
   moviesAPI.setSearchQuery(query);
   getSearched(1);
 };
