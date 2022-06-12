@@ -13,7 +13,7 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: $tablet) {
   .container {
     width: 768px;
     padding-left: 32px;
@@ -21,7 +21,7 @@
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: $desktop) {
   .container {
     width: 1024px;
     padding-left: 32px;

@@ -1,16 +1,21 @@
 let watchedMovies = [];
 let queueMovies = [];
+
 export function addMovieIdToLocalStorage(key, movieId) {
   if (!localStorage.getItem(key)) {
     watchedMovies.push(movieId);
     localStorage.setItem(key, JSON.stringify(watchedMovies));
     return;
-  } else if (watchedMovies.includes(movieId)) {
+  }
+  watchedMovies = JSON.parse(localStorage.getItem(key));
+
+  if (watchedMovies.includes(movieId)) {
     watchedMovies = JSON.parse(localStorage.getItem(key));
     watchedMovies = watchedMovies.filter(item => item !== movieId);
     localStorage.setItem(key, JSON.stringify(watchedMovies));
     return;
-  } else if (!watchedMovies.includes(movieId)) {
+  }
+  if (!watchedMovies.includes(movieId)) {
     watchedMovies = JSON.parse(localStorage.getItem(key));
     watchedMovies.push(movieId);
     localStorage.setItem(key, JSON.stringify(watchedMovies));
@@ -22,12 +27,17 @@ export function addMovieToQueue(key, movieId) {
     queueMovies.push(movieId);
     localStorage.setItem(key, JSON.stringify(queueMovies));
     return;
-  } else if (queueMovies.includes(movieId)) {
+  }
+
+  queueMovies = JSON.parse(localStorage.getItem(key));
+
+  if (queueMovies.includes(movieId)) {
     queueMovies = JSON.parse(localStorage.getItem(key));
     queueMovies = queueMovies.filter(item => item !== movieId);
     localStorage.setItem(key, JSON.stringify(queueMovies));
     return;
-  } else if (!queueMovies.includes(movieId)) {
+  }
+  if (!queueMovies.includes(movieId)) {
     queueMovies = JSON.parse(localStorage.getItem(key));
     queueMovies.push(movieId);
     localStorage.setItem(key, JSON.stringify(queueMovies));
