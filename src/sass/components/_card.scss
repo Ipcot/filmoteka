@@ -92,3 +92,8 @@
   align-items: center;
   background-color: $white-color;
 }
+
+.card__image {
+height: 100%;
+object-fit: cover;
+}
