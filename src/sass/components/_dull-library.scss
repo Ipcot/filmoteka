@@ -24,7 +24,7 @@
   max-width: 100%;
   border-radius: 8px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $tablet) {
     width: 400px;
   }
 }
