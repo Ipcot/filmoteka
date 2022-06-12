@@ -211,11 +211,12 @@
   border-radius: 5px;
   border: 1px solid $black-color;
   cursor: pointer;
-  &:hover,
-  &:focus {
+  transition: all $animation-duration $bezier-transition;
+
+  &:hover {
     background: $accent-color;
     color: $white-color;
-    border: none;
+    border-color: $accent-color;
   }
   @media screen and (min-width: $tablet) {
     min-width: 125px;
@@ -225,4 +226,10 @@
     min-width: 136px;
     padding: 14px 10px;
   }
+}
+
+.modal__btn--active {
+  background: $accent-color;
+  color: $white-color;
+  border-color: $accent-color;
 }
