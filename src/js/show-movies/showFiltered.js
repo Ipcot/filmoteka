@@ -36,10 +36,10 @@ filterBtn.addEventListener('click', openFilterModal);
 filterClose.addEventListener('click', closeFilterModal);
 
 okBtn.addEventListener('click', () => {
-  const selectedGenres = document.querySelectorAll('.custom-checkbox') ;
-  const genreIds = Array.from(selectedGenres).map(genre => genre.dataset.id);
+  const genreIds = document.querySelectorAll('.custom-checkbox' + ':checked');
+  const genreIdsArray = Array.from(genreIds).map(genre => genre.value);
+  searchWithFilter(genreIdsArray);
   showSpinner(true);
-  setTimeout(() =>  searchWithFilter(genreIds), 1000);
   closeFilterModal();
 }
 );
