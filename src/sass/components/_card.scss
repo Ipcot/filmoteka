@@ -91,9 +91,11 @@
   display: flex;
   align-items: center;
   background-color: $white-color;
+
 }
 
 .card__image {
 height: 100%;
 object-fit: cover;
+border-radius: 10px;
 }
