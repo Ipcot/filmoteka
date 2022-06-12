@@ -4,6 +4,7 @@ import searchMovies from './show-movies/search-movies';
 import getPopular from './show-movies/get-popular';
 import { showLibDull } from './utils/render-library-markup';
 import { showHomeDull } from './show-movies/search-movies';
+import { hideFilter, resetFilter, showFilterBtn } from './filter';
 
 export const refs = {
   body: document.querySelector('body'),
@@ -48,6 +49,9 @@ const showSearchForm = () => {
 
 const initLibrary = () => {
   const { conteinerHeader } = refs;
+  resetFilter();
+  showFilterBtn(false);
+  hideFilter();
   showHomeDull(false);
   showPagination(false);
 
@@ -63,7 +67,10 @@ const initLibrary = () => {
 // -----------initHome-----------//
 
 const initHome = () => {
+  showFilterBtn(true);
+  hideFilter();
   showLibDull(false);
+  resetFilter();
   showHomeDull(false);
   getPopular(1);
   showPagination(true);
