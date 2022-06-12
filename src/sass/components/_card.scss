@@ -3,7 +3,7 @@
   margin-bottom: 20px;
   transition: transform $animation-duration $bezier-transition;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $tablet) {
     margin: 15px;
     width: calc((100% - 2 * 30px) / 2);
   }
@@ -11,7 +11,7 @@
    &:hover {
         transform: scale(1.023);
     }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: $desktop) {
     margin-right: 0px;
     width: calc((100% - 3 * 30px) / 3);
   }
@@ -87,9 +87,11 @@
  }
 
  .card__thumb {
-   height: 464px;
+   height: 398px;
+@media screen and (min-width: $tablet) {height: 450px;}
    display: flex;
    align-items: center;
    background-color: $white-color;
  }
 
+.card__image {object-fit: contain;}
