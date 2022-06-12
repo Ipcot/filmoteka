@@ -1,16 +1,9 @@
  import { initializeApp } from 'firebase/app';
-import { getAnalytics } from "firebase/analytics";
-//  import { getAuth } from "firebase/auth";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
-import firebase from "firebase/app";
 import "firebase/auth";
 import Notiflix from 'notiflix';
 
-
-//  var firebase = require('firebase');
-var firebaseui = require('firebaseui');
 
 
 
@@ -26,13 +19,6 @@ const firebaseConfig = {
 
 
  const app = initializeApp(firebaseConfig);
-// firebase.initializeApp(firebaseConfig);
-// const db = getFirestore(app);
-
-// const analytics = getAnalytics(app);
- 
-
-
     
 
 const auth = getAuth(app);

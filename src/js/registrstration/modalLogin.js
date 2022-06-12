@@ -1,6 +1,4 @@
 
-
-
 let popup = document.getElementById('popup'),
     popupSign = document.getElementById('popupSign'),
     btnLogin = document.getElementById('btnM'),
