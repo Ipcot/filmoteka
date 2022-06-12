@@ -1,4 +1,9 @@
+import { showPagination } from './pagination';
+import onGoToMyLibrary from './utils/render-library-markup';
 import searchMovies from './show-movies/search-movies';
+import getPopular from './show-movies/get-popular';
+import { showLibDull } from './utils/render-library-markup';
+import { showHomeDull } from './show-movies/search-movies';
 
 export const refs = {
   body: document.querySelector('body'),
@@ -12,6 +17,10 @@ export const refs = {
   searchForm: document.querySelector('[data-root="search-form"]'),
   refLibsSelect: document.querySelector('[data-root="library-buttons"]'),
   switchTheme: document.querySelector('.switch-btn'),
+  modal: document.querySelector('div .modal'),
+  modalTeam: document.querySelector('.backdrop-container-team__content-team'),
+  logoText: document.querySelector('.logo__text'),
+  logoTextSpan: document.querySelector('.logo__text__span'),
 };
 //------------removeActive------------//
 
@@ -39,6 +48,8 @@ const showSearchForm = () => {
 
 const initLibrary = () => {
   const { conteinerHeader } = refs;
+  showHomeDull(false);
+  showPagination(false);
 
   conteinerHeader.classList.add('header__container_library');
   conteinerHeader.classList.remove('header__container_home');
@@ -46,11 +57,16 @@ const initLibrary = () => {
   localStorage.setItem('page', 'library');
 
   showLibSelector();
+  onGoToMyLibrary();
 };
 
 // -----------initHome-----------//
 
 const initHome = () => {
+  showLibDull(false);
+  showHomeDull(false);
+  getPopular(1);
+  showPagination(true);
   const { conteinerHeader } = refs;
 
   conteinerHeader.classList.remove('header__container_library');
@@ -122,7 +138,7 @@ if (initPage) {
 
 //---------------SWITCH THEME--------------//
 
-const { body, switchTheme } = refs;
+const { body, switchTheme, modal, logoText, logoTextSpan } = refs;
 
 const theme = {
   ORIGINALLY: 'originally-theme',
@@ -140,12 +156,33 @@ if (!currentTheme) {
   body.classList.add(currentTheme);
 }
 
-switchTheme.click = currentTheme === ORIGINALLY ? false : true;
+if (currentTheme === PATRIOTIC) {
+  switchTheme.classList.add('switch-on');
+  modal.classList.add('switch-on');
+  // modalTeam.classList.add('switch-on');
+  logoText.classList.add('patriotic__blu');
+  logoTextSpan.classList.add('patriotic__yellow');
+} else {
+  switchTheme.classList.remove('switch-on');
+  modal.classList.remove('switch-on');
+  // modalTeam.classList.remove('switch-on');
+  logoText.classList.remove('patriotic__blu');
+  logoTextSpan.classList.remove('patriotic__yellow');
+}
+
+// switchTheme.click = currentTheme === ORIGINALLY ? false : true;
 
 const changeTheme = () => {
   body.classList.toggle(PATRIOTIC);
   body.classList.toggle(ORIGINALLY);
+
   switchTheme.classList.toggle('switch-on');
+
+  modal.classList.toggle('switch-on');
+  // modalTeam.classList.toggle('switch-on');
+
+  logoText.classList.toggle('patriotic__blu');
+  logoTextSpan.classList.toggle('patriotic__yellow');
 
   localStorage.setItem('currentTheme', body.classList.contains(PATRIOTIC) ? PATRIOTIC : ORIGINALLY);
 };

@@ -1,6 +1,6 @@
 import moviesPageTpl from '../../templates/moviesPage.hbs';
 import dullImg from '../../img/poster.jpg';
-import genresList from './genres.json';
+import genresList from '../data/genres.json';
 
 const imgResource = 'https://image.tmdb.org/t/p/w300';
 
@@ -11,10 +11,16 @@ function renderMarkup(list) {
   moviesContainer.innerHTML = markup;
 }
 
-function transformMovieData(movie) {
-  const { title, release_date, poster_path, vote_average, genre_ids, id } = movie;
+export function renderLibraryItem(item) {
+  const markup = moviesPageTpl(transformMovieData(item, true));
+  moviesContainer.insertAdjacentHTML('beforeend', markup);
+}
 
-  const genres = getGenreNames(genre_ids);
+function transformMovieData(movie, isLibrary) {
+  const { title, release_date, poster_path, vote_average, id } = movie;
+
+  const genres = isLibrary ? transformLibGenres(movie.genres) : getGenreNames(movie.genre_ids);
+
   const year = release_date.slice(0, 4);
 
   return {
@@ -27,12 +33,21 @@ function transformMovieData(movie) {
   };
 }
 
+function transformLibGenres(genresObjs) {
+  const genres = genresObjs.map(genre => genre.name);
+  return sliceGenresList(genres);
+}
+
 function getGenreNames(genreIds) {
   const genres = genreIds.map(genreId => {
     const currentGenre = genresList.find(genre => genre.id === genreId);
     return currentGenre.name;
   });
 
+  return sliceGenresList(genres);
+}
+
+function sliceGenresList(genres) {
   if (genres.length <= 3) {
     return genres;
   }

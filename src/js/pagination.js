@@ -23,8 +23,6 @@ const options = {
       let customBtnClass = '';
       let value = '';
 
-      let orderText = '';
-
       if (type.type === 'first') {
         value = '1';
         customBtnClass = 'pagination__move-btn-first';
@@ -52,14 +50,11 @@ const options = {
       let customBtnClass = '';
       let value = '';
 
-      let orderText = '';
-
       if (type.type === 'first') {
         value = '1';
         customBtnClass = 'pagination__move-btn-first';
       } else if (type.type === 'last') {
         value = Math.ceil(options.totalItems / options.itemsPerPage);
-        console.log(value);
         customBtnClass = 'pagination__move-btn-last';
       } else if (type.type === 'prev') {
         customIconClass = 'pagination__icon-left';
@@ -90,7 +85,7 @@ const options = {
   },
 };
 
-const instance = new Pagination(container, options);
+let instance;
 
 function onResize() {
   matchStylesToMedia();
@@ -117,8 +112,7 @@ function matchStylesToMedia() {
   }
 }
 
-export default function onPageChange(currentPage = 1) {
-  showMovies(currentPage);
+function onPageChange(currentPage = 1) {
   let firstBtn = document.querySelector('.pagination__move-btn-first');
   let lastBtn = document.querySelector('.pagination__move-btn-last');
 
@@ -127,6 +121,12 @@ export default function onPageChange(currentPage = 1) {
   let currentBatch = Math.ceil(currentPage / options.visiblePages);
 
   onResize();
+
+  if (totalPages <= 1) {
+    container.classList.add('pagination__move-btn--hidden');
+  } else {
+    container.classList.remove('pagination__move-btn--hidden');
+  }
 
   if (currentPage <= options.visiblePages) {
     firstBtn.classList.add('pagination__move-btn--hidden');
@@ -141,22 +141,31 @@ export default function onPageChange(currentPage = 1) {
   }
 }
 
-instance.getCurrentPage();
+export function resetTotalHits(hits) {
+  createPagination(hits);
+}
 
-onPageChange();
+function createPagination(totalItems = 500) {
+  options.totalItems = totalItems;
+  container.innerHTML = '';
+  instance = new Pagination(container, options);
 
-instance.on('afterMove', event => {
-  const currentPage = event.page;
+  onPageChange();
 
-  onPageChange(currentPage);
-});
+  instance.on('afterMove', event => {
+    const currentPage = event.page;
+
+    onPageChange(currentPage);
+    showMovies(currentPage);
+  });
+}
+
+export function showPagination(isShown) {
+  if (isShown) {
+    return container.classList.remove('pagination--hidden');
+  }
+
+  container.classList.add('pagination--hidden');
+}
 
 window.addEventListener('resize', throttle(onResize, 200));
-
-export function resetTotalHits(hits) {
-  instance.setTotalItems(hits);
-}
-
-export function resetPage() {
-  instance.movePageTo(1);
-}

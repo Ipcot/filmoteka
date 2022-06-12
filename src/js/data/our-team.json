@@ -1,0 +1,84 @@
+[
+  {
+  
+    "name": "Yuriy",
+     "position": "Teamlead",
+    "img": "../../img/our-team/Yuriy.jpg",
+    "gitLink": 
+        "https://github.com/Ipcot"
+  },
+  {
+
+    "name": "Anna",
+    "position":  "Scrum master",
+    "img": "././img/our-team/Anna.jpg",
+    "gitLink": 
+        "https://github.com/berkmansanna"
+  },
+    
+    {
+      
+      "name": "Dmitry",
+     "position": "Developer",
+    "img": "./img/Dmitry.jpg",
+    "gitLink": 
+        "https://github.com/demetrx"
+  },
+   {
+  
+    "name": "Marina",
+     "position": "Developer",
+    "img": "../../img/our-team/Marina.jpg",
+    "gitLink": 
+        "https://github.com/mkhomenko2212"
+  },
+   {
+   
+    "name": "Yura",
+     "position": "Developer",
+    "img": "../../img/our-team/Yura.jpg",
+    "gitLink": 
+        ""
+  },
+   {
+
+    "name": "Vladislav",
+   "position": "Developer",
+    "img": "../../img/our-team/Vladislav.jpg",
+    "gitLink": 
+        "https://github.com/11Vladislav"
+  },
+   {
+ 
+    "name": "Nazarii",
+    "position": "Developer",
+    "img": "../../img/our-team/Nazarii.jpg",
+    "gitLink": 
+        "https://github.com/Nazarii0504"
+  },
+   
+   {
+    
+    "name": "Nataliya",
+    "position": "Developer",
+    "img": "../../img/our-team/Nataliya.jpg",
+    "gitLink": 
+        "https://github.com/Nataliyalevitska"
+  },
+   {
+   
+    "name": "Pavlo",
+   "position": "Developer",
+    "img": "../../img/our-team/Pavlo.jpg",
+    "gitLink": 
+        "https://github.com/Pavlo-levitskiy"
+  },
+   {
+   
+    "name": "Andrew",
+   "position": "Developer",
+    "img": "../../img/our-team/Andrew.jpg",
+    "gitLink": 
+        ""
+  }
+]
