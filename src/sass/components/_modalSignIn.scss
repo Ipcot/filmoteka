@@ -1,4 +1,4 @@
-.btn-modal-login, .btn-modal-singl {
+.btn-modal-login, .btn-modal-sign {
     margin-left: 5px;
     background: -webkit-gradient(linear, left top, left bottom, from(#04b709), to(#005d0b));
     background: linear-gradient(hsl(44, 96%, 37%), #ff6b08);
@@ -10,14 +10,14 @@
 }
 
 .btn-modal-login:hover,
-.btn-modal-singl:hover {
+.btn-modal-sign:hover {
     background: -webkit-gradient(linear, left top, left bottom, from(#005d0b), to(#04b709));
     background: linear-gradient(#005d0b, #04b709);
 }
 
-.btn-modal-singl {
-    margin-left: 40px;
-}
+// .btn-modal-sign {
+//     margin-left: 40px;
+// }
 
 #popupSign {
     display: none;
@@ -36,7 +36,7 @@
     -webkit-animation: animate 0.5s ease-in-out;
     animation: animate 0.5s ease-in-out;
     background: #fff;
-    // text-align: center;
+    text-align: center;
     z-index: 999;
 }
 
