@@ -2,6 +2,7 @@ import './header';
 import './footer';
 import './modal';
 import './pagination';
+import './filter';
 
 import './utils/render-library-markup';
 import './utils/back-to-top';

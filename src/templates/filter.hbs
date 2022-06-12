@@ -1,0 +1,13 @@
+<h2 class="filter-title">Genres</h2>
+<button type="button" class="modal__btn--close js-close-filter">
+  <i class="material-icons">small close</i>
+</button>
+<form class='genres-filter js-genres-filter'>
+  {{#each this}}
+    <div class="checkbox-wrapper">
+      <label for="{{name}}" class="genre-name" >{{name}}</label>
+      <input id="{{name}}" type="checkbox" value="{{id}}" class="custom-checkbox" >
+    </div>
+  {{/each}}
+  <button type="submit" class="filter-btn">Search</button>
+</div>

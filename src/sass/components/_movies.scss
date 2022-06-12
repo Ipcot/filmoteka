@@ -36,9 +36,9 @@
 
   &:last-child {
     @media (min-width: $desktop) {
-        margin-left: 16px;
-      }
-    
+      margin-left: 16px;
+    }
+
     margin-right: auto;
   }
 }
@@ -46,7 +46,7 @@
 .genre-filter__btn {
   margin-left: 15px;
 
-  min-width: 110px;
+  width: 110px;
   border-radius: 5px;
   padding: 10px;
   background-color: $accent-color;

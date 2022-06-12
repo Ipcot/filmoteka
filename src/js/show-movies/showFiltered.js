@@ -10,7 +10,7 @@ function searchWithFilter(genreIds) {
   showFitered(1);
 }
 
-function showFitered(page = 1) {
+function showFitered(page) {
   showSpinner(true);
   moviesAPI
     .fetchFiteredMovies(page)
@@ -24,31 +24,3 @@ function showFitered(page = 1) {
 }
 
 export default searchWithFilter;
-
-// setTimeout(() => searchWithFilter([28, 12, 16]), 3000);
-
-const filterBtn = document.querySelector('.genre-filter__btn');
- const filterModal = document.querySelector('.filter-modal');
- const filterClose = document.querySelector('.filter-close');
- const okBtn = document.querySelector('.filter-btn');
-
-filterBtn.addEventListener('click', openFilterModal);
-filterClose.addEventListener('click', closeFilterModal);
-
-okBtn.addEventListener('click', () => {
-  const genreIds = document.querySelectorAll('.custom-checkbox' + ':checked');
-  const genreIdsArray = Array.from(genreIds).map(genre => genre.value);
-  searchWithFilter(genreIdsArray);
-  showSpinner(true);
-  closeFilterModal();
-}
-);
-
-function openFilterModal() {
-  filterModal.classList.remove('is-hidden');
-
-}
-
-function closeFilterModal() {
-  filterModal.classList.add('is-hidden');
-}
