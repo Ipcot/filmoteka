@@ -3,11 +3,10 @@ import members from './services/our-team.json';
 
 const refs = {
   openMenuBtn: document.querySelector('.footer__link'),
-  closeMenuBtn: document.querySelector('.modal-content__close-btn-team '),
+  closeMenuBtn: document.querySelector('.data-modal-team'),
 };
 
 refs.openMenuBtn.addEventListener('click', renderOurTEam);
-//refs.closeMenuBtn.addEventListener('click');
 
 function renderOurTEam() {
   const markup = teamTemplates(members);
