@@ -13,3 +13,4 @@ import './show-movies/showFiltered';
 import './registrstration/login';
 import './registrstration/modalLogin';
 import './registrstration/signIn';
+import './registrstration/exit';

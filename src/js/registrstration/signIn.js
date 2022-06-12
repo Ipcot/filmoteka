@@ -42,6 +42,7 @@ let password = '';
 let name = '';
 const btnLogin = document.getElementById('btnM');
 const btnSign = document.getElementById('btnC');
+const btnExit = document.getElementById('btnB');
 const myLibrary = document.querySelector('.library');
 const form = document.querySelector('.modal-body-sign');
  form.addEventListener('submit', onFormSubmitSignIn);
@@ -77,5 +78,5 @@ function successSignIn() {
     document.getElementById("overlay").style.display = "none";
     btnLogin.classList.add('btn-is-hidden');
     btnSign.classList.add('btn-is-hidden');
-    
+    btnExit.classList.remove('btn-is-hidden');
 } 
