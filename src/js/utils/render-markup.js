@@ -1,6 +1,6 @@
 import moviesPageTpl from '../../templates/moviesPage.hbs';
 import dullImg from '../../img/poster.jpg';
-import genresList from './genres.json';
+import genresList from '../data/genres.json';
 
 const imgResource = 'https://image.tmdb.org/t/p/w300';
 

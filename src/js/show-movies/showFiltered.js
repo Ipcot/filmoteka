@@ -1,25 +1,19 @@
-import MoviesAPI from '../services/movies-api';
 import renderMarkup from '../utils/render-markup';
 import { resetTotalHits } from '../pagination';
-
+import MoviesAPI from '../services/movies-api';
 import showSpinner from '../utils/spinner';
 
 const moviesAPI = new MoviesAPI();
 
-const form = document.querySelector('#movie-search');
-const homeBtn = document.querySelectorAll('[data-page="home"]');
+function searchWithFilter(genreIds) {
+  moviesAPI.setFilter(genreIds);
+  showFitered(1);
+}
 
-homeBtn.forEach(btn =>
-  btn.addEventListener('click', () => {
-    form.removeAttribute('data-touched');
-    getPopular(1);
-  }),
-);
-
-const getPopular = (page = 1) => {
+function showFitered(page = 1) {
   showSpinner(true);
   moviesAPI
-    .fetchPopularMovies(page)
+    .fetchFiteredMovies(page)
     .then(({ results, total_results }) => {
       renderMarkup(results);
       if (page === 1) {
@@ -27,6 +21,8 @@ const getPopular = (page = 1) => {
       }
     })
     .finally(() => showSpinner(false));
-};
+}
 
-export default getPopular;
+export default searchWithFilter;
+
+// setTimeout(() => searchWithFilter([28, 12, 16]), 3000);

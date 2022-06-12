@@ -8,11 +8,10 @@
     width: calc((100% - 2 * 30px) / 2);
   }
 
-   &:hover {
-        transform: scale(1.023);
-    }
+  &:hover {
+    transform: scale(1.023);
+  }
   @media screen and (min-width: 1200px) {
-
     width: calc((100% - 3 * 30px) / 3);
   }
 
@@ -77,11 +76,17 @@
 
 .card__description {
   margin-top: 8px;
- 
 }
 
 .card__stats {
   align-items: center;
   margin-top: 5px;
-  display: flex;  
- }
+  display: flex;
+}
+
+.card__thumb {
+  height: 464px;
+  display: flex;
+  align-items: center;
+  background-color: $white-color;
+}

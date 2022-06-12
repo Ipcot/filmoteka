@@ -15,5 +15,3 @@ export default function showMovies(page) {
 
   getPopular(page);
 }
-
-getPopular(1);
