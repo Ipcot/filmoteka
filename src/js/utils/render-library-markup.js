@@ -60,7 +60,7 @@ function renderLibraryMarkup(movieIds) {
   });
 }
 
-function renderLsData(key) {
+export function renderLsData(key) {
   const lsData = localStorage.getItem(key);
   const place = key === LS_QUEUE ? 'the queue' : 'watched';
 
@@ -72,6 +72,8 @@ function renderLsData(key) {
   }
 
   const lsDataParsed = JSON.parse(lsData);
+
+  lsDataParsed.length === 0 && showLibDull(true);
 
   renderLibraryMarkup(lsDataParsed);
   Notiflix.Notify.info(`You have ${lsDataParsed.length} movies in ${place}.`);
