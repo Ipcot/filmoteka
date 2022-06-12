@@ -1,6 +1,9 @@
 import { showPagination } from './pagination';
-import onGoToMyLibrary from './services/render-library-markup';
+import onGoToMyLibrary from './utils/render-library-markup';
 import searchMovies from './show-movies/search-movies';
+import getPopular from './show-movies/get-popular';
+import { showLibDull } from './utils/render-library-markup';
+import { showHomeDull } from './show-movies/search-movies';
 
 export const refs = {
   body: document.querySelector('body'),
@@ -45,6 +48,7 @@ const showSearchForm = () => {
 
 const initLibrary = () => {
   const { conteinerHeader } = refs;
+  showHomeDull(false);
   showPagination(false);
 
   conteinerHeader.classList.add('header__container_library');
@@ -59,6 +63,9 @@ const initLibrary = () => {
 // -----------initHome-----------//
 
 const initHome = () => {
+  showLibDull(false);
+  showHomeDull(false);
+  getPopular(1);
   showPagination(true);
   const { conteinerHeader } = refs;
 
@@ -108,7 +115,7 @@ const handleSearch = e => {
 
   searchMovies(query);
 
-  // e.target.reset();
+  e.target.reset();
 };
 
 refs.searchForm.addEventListener('submit', handleSearch);

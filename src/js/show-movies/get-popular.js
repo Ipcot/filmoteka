@@ -11,8 +11,8 @@ const homeBtn = document.querySelectorAll('[data-page="home"]');
 
 homeBtn.forEach(btn =>
   btn.addEventListener('click', () => {
-    getPopular(1);
     form.removeAttribute('data-touched');
+    getPopular(1);
   }),
 );
 
