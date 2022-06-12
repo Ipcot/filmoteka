@@ -36,49 +36,44 @@ const firebaseConfig = {
     
 
 const auth = getAuth(app);
- const formData = {};
+const formDataSign = {};
 let email = ''
 let password = '';
 let name = '';
 const btnLogin = document.getElementById('btnM');
 const btnSign = document.getElementById('btnC');
 const myLibrary = document.querySelector('.library');
-const form = document.querySelector('.modal-body');
- form.addEventListener('submit', onFormSubmitRegister);
+const form = document.querySelector('.modal-body-sign');
+ form.addEventListener('submit', onFormSubmitSignIn);
 form.addEventListener('input', onFormInput);
 
 
 function onFormInput(e) {
-    formData[e.target.name] = e.target.value
-    console.log(formData)
-     email = formData.email;
+    formDataSign[e.target.name] = e.target.value
+    console.log(formDataSign)
+     email = formDataSign.email;
      console.log(email);
-    password = formData.password;
-    name = formData.text;
-    
+    password = formDataSign.password;
 
 }
 
 
-
-function onFormSubmitRegister(e) {
+function onFormSubmitSignIn(e) {
     
     e.preventDefault()
     e.target.reset();
     console.log(email);
     console.log(password);
-    createUserWithEmailAndPassword(auth, email, password, name).then(successRegister ).catch(function (error) {
+    signInWithEmailAndPassword(auth, email, password).then(successSignIn ).catch(function (error) {
         Notiflix.Notify.failure(`${error.code}`)
         Notiflix.Notify.failure(`${error.message}`);
     });
 }
 
-
-
-function successRegister() { 
+function successSignIn() { 
     Notiflix.Notify.success('Welcom in our site'); 
     myLibrary.classList.remove('library-is-hidden');
-    popup.style.display = 'none';
+    popupSign.style.display = 'none';
     document.getElementById("overlay").style.display = "none";
     btnLogin.classList.add('btn-is-hidden');
     btnSign.classList.add('btn-is-hidden');
