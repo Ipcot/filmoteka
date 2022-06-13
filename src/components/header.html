@@ -1,5 +1,6 @@
 <header class="header">
   <div class="container header__container header__container_home">
+    <button type="button" class="btn-modal-login btn-google" id="btnG">Google</button>
     <nav class="navigation">
       <a href="#" class="logo" data-page="home" data-action="switch-page">
         <svg class="logo__icon">
@@ -16,11 +17,21 @@
         </li>
 
         <li class="navigation__item">
-          <a class="navigation__link" data-page="library" data-action="switch-page" href="#"
+          <a
+            class="navigation__link library-is-hidden library"
+            data-page="library"
+            data-action="switch-page"
+            href="#"
             >My library</a
           >
         </li>
+
+        <button type="button" class="btn-modal-login" id="btnM">Register</button>
+        <button type="button" class="btn-modal-login" id="btnC">Sign In</button>
+        <button type="button" class="btn-modal-login btn-is-hidden" id="btnB">Exit</button>
+
         <div class="switch-btn"></div>
+
       </ul>
     </nav>
 
