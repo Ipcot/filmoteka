@@ -9,6 +9,12 @@
     cursor: pointer;
 }
 
+.btn-google {
+   position: fixed; 
+   top: 10px;
+   right: 20px;
+}
+
 .btn-modal-login:hover,
 .btn-modal-sign:hover {
     background: -webkit-gradient(linear, left top, left bottom, from(#005d0b), to(#04b709));
@@ -119,7 +125,7 @@ img {
 
 @media screen and (min-width: 768px) {
     #popupSign {
-        width: 50%;
+        width: 40%;
     }
 }
 
