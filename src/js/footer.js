@@ -1,5 +1,5 @@
 import teamTemplates from '../templates/our-team.hbs';
-import members from './services/our-team.json';
+import members from './data/our-team.json';
 
 const refs = {
   openMenuBtn: document.querySelector('.footer__link'),
