@@ -1,10 +1,7 @@
  import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { GoogleAuthProvider } from "firebase/auth";
 import "firebase/auth";
 import Notiflix from 'notiflix';
-import firebase from 'firebase/auth';
-
 
 
 
@@ -48,7 +45,6 @@ function onFormInput(e) {
 }
 
 
-
 function onFormSubmitRegister(e) {
     
     e.preventDefault()
@@ -75,36 +71,6 @@ function successRegister() {
 } 
 
 
-const btnGoogle = document.getElementById('btnG');
-
-btnGoogle.addEventListener('click', onFormcoogle);
 
 
-import { signInWithRedirect, signInWithPopup, getRedirectResult } from "firebase/auth";
-function onFormcoogle() {
-    const provider = new GoogleAuthProvider();
-//     signInWithPopup(auth, provider).then((result) => {
-//     // This gives you a Google Access Token. You can use it to access the Google API.
-//     const credential = GoogleAuthProvider.credentialFromResult(result);
-//     const token = credential.accessToken;
-//     // The signed-in user info.
-//     const user = result.user;
-//     // ...
-//   }, successRegister).catch((error) => {
-//     // Handle Errors here.
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-//     // The email of the user's account used.
-//     const email = error.customData.email;
-//     // The AuthCredential type that was used.
-//     const credential = GoogleAuthProvider.credentialFromError(error);
-//     // ...
-//   });
-
-    getRedirectResult(auth)
-    signInWithRedirect(auth, provider).then(successRegister ).catch(function (error) {
-        Notiflix.Notify.failure(`${error.code}`)
-        Notiflix.Notify.failure(`${error.message}`);
-    });;
-}
 

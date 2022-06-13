@@ -16,7 +16,7 @@
     transition: 1s;
     -webkit-animation: animate 0.5s ease-in-out;
     animation: animate 0.5s ease-in-out;
-    background: #fff;
+    background: $white-color;
     text-align: center;
     z-index: 999;
 }
@@ -28,7 +28,7 @@
     top: -5px;
     cursor: pointer;
     font-weight: bold;
-    color: #fff;
+    color: $white-color;
     font-size: 35px;
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
@@ -85,8 +85,6 @@
 
 .modal-body {
     padding: 20px;
-    // display: flex;
-    // flex-direction: column;
 }
 
 .modal-body input {

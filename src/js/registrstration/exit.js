@@ -20,6 +20,7 @@ const app = initializeApp(firebaseConfig);
 const btnLogin = document.getElementById('btnM');
 const btnSign = document.getElementById('btnC');
 const btnExit = document.getElementById('btnB');
+const btnGoogle = document.getElementById('btnG');
 const myLibrary = document.querySelector('.library');
  
 
@@ -40,5 +41,6 @@ function successExit() {
     myLibrary.classList.add('library-is-hidden');
     btnLogin.classList.remove('btn-is-hidden');
     btnSign.classList.remove('btn-is-hidden');
+    btnGoogle.classList.remove('btn-is-hidden');
     btnExit.classList.add('btn-is-hidden');
 } 
