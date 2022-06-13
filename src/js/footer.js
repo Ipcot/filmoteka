@@ -3,7 +3,7 @@ import members from './services/our-team.json';
 
 const refs = {
   openMenuBtn: document.querySelector('.footer__link'),
-  closeMenuBtn: document.querySelector('.data-modal-team'),
+  // modalClose: document.querySelector('.js-modal-close'),
 };
 
 refs.openMenuBtn.addEventListener('click', renderOurTEam);
