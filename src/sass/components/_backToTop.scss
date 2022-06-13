@@ -40,7 +40,7 @@
     width: 20px;
     height: 5px;
     content: '';
-    background-color: #fff;
+    background-color: $white-color;
     transform: translate(0, -50%) rotate(45deg);
 }
 
@@ -52,7 +52,7 @@
     width: 20px;
     height: 5px;
     content: '';
-    background-color: #fff;
+    background-color: $white-color;
     transform: translate(0, -50%) rotate(-45deg);
 }
 
