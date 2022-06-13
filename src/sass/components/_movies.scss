@@ -36,9 +36,32 @@
 
   &:last-child {
     @media (min-width: $desktop) {
-        margin-left: 16px;
-      }
-    
+      margin-left: 16px;
+    }
+
     margin-right: auto;
+  }
+}
+
+.genre-filter__btn {
+  margin: -15px auto 10px;
+  display: block;
+  min-width: 110px;
+  padding: 10px;
+  background-color: transparent;
+  text-transform: uppercase;
+  font-size: 19px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: color $animation-duration $bezier-transition;
+
+  &:hover,
+  &.is-active {
+    color: $accent-color;
+  }
+
+  @media screen and (min-width: $tablet) {
+    margin: -15px auto 0;
   }
 }

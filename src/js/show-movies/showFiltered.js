@@ -10,7 +10,7 @@ function searchWithFilter(genreIds) {
   showFitered(1);
 }
 
-function showFitered(page = 1) {
+function showFitered(page) {
   showSpinner(true);
   moviesAPI
     .fetchFiteredMovies(page)
@@ -24,5 +24,3 @@ function showFitered(page = 1) {
 }
 
 export default searchWithFilter;
-
-// setTimeout(() => searchWithFilter([28, 12, 16]), 3000);

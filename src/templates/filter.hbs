@@ -1,0 +1,11 @@
+<form class='genres-filter js-genres-filter'>
+  <div class='genres-list'>
+  {{#each this}}
+    <div class="checkbox-wrapper">
+      <label for="{{name}}" class="genre-name" >{{name}}</label>
+      <input id="{{name}}" type="checkbox" value="{{id}}" class="custom-checkbox" >
+    </div>
+  {{/each}}
+  </div>
+  <button type="submit" class="filter-btn">Apply</button>
+</div>
