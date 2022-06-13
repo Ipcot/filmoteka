@@ -12,7 +12,9 @@ $black-color: #000;
 $accent-color: #ff6b08;
 $accent-shadow: 0px 0px 6px 2px #ff6b0880;
 $bg-gradient: linear-gradient(#00000056, #00000056);
-$dark-theme-shadow: 0 0 12px 5px #ff6b0880;
+$switch-theme-gr: linear-gradient(135deg, rgb(94, 195, 240), rgb(240, 229, 85));
+$patriotic-yellow: rgb(240, 229, 85);
+$patriotic-blu: rgb(94, 195, 240);
 
 $animation-duration: 250ms;
 $bezier-transition: cubic-bezier(0.4, 0, 0.2, 1);
