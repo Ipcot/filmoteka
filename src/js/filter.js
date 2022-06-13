@@ -7,13 +7,11 @@ filterPanel.innerHTML = filterTpl(genres);
 
 const refs = {
   filter: document.querySelector('.js-genres-filter'),
-  closeFilterBtn: document.querySelector('.js-close-filter'),
   openFilterBtn: document.querySelector('.genre-filter__btn'),
 };
 
 refs.filter.addEventListener('submit', onFilterSubmit);
-refs.openFilterBtn.addEventListener('click', showFilter);
-refs.closeFilterBtn.addEventListener('click', hideFilter);
+refs.openFilterBtn.addEventListener('click', toggleFilter);
 
 function onFilterSubmit(e) {
   e.preventDefault();
@@ -24,10 +22,19 @@ function onFilterSubmit(e) {
   searchWithFilter(ids);
 }
 
-function showFilter() {
-  filterPanel.classList.remove('visually-hidden');
+function toggleFilter() {
+  filterPanel.classList.toggle('visually-hidden');
 }
 
-function hideFilter() {
+export function hideFilter() {
   filterPanel.classList.add('visually-hidden');
+}
+
+export function showFilterBtn(isShown) {
+  !isShown && refs.openFilterBtn.classList.add('visually-hidden');
+  isShown && refs.openFilterBtn.classList.remove('visually-hidden');
+}
+
+export function resetFilter() {
+  refs.filter.reset();
 }
