@@ -22,6 +22,7 @@ export const refs = {
   modalTeam: document.querySelector('.backdrop-container-team__content-team'),
   logoText: document.querySelector('.logo__text'),
   logoTextSpan: document.querySelector('.logo__text__span'),
+  footer: document.querySelector('footer'),
 };
 //------------removeActive------------//
 
@@ -145,7 +146,7 @@ if (initPage) {
 
 //---------------SWITCH THEME--------------//
 
-const { body, switchTheme, modal, logoText, logoTextSpan } = refs;
+const { body, switchTheme, modal, logoText, logoTextSpan, footer } = refs;
 
 const theme = {
   ORIGINALLY: 'originally-theme',
@@ -166,18 +167,16 @@ if (!currentTheme) {
 if (currentTheme === PATRIOTIC) {
   switchTheme.classList.add('switch-on');
   modal.classList.add('switch-on');
-  // modalTeam.classList.add('switch-on');
+  footer.classList.add('switch-on');
   logoText.classList.add('patriotic__blu');
   logoTextSpan.classList.add('patriotic__yellow');
 } else {
   switchTheme.classList.remove('switch-on');
   modal.classList.remove('switch-on');
-  // modalTeam.classList.remove('switch-on');
+  footer.classList.remove('switch-on');
   logoText.classList.remove('patriotic__blu');
   logoTextSpan.classList.remove('patriotic__yellow');
 }
-
-// switchTheme.click = currentTheme === ORIGINALLY ? false : true;
 
 const changeTheme = () => {
   body.classList.toggle(PATRIOTIC);
@@ -186,7 +185,7 @@ const changeTheme = () => {
   switchTheme.classList.toggle('switch-on');
 
   modal.classList.toggle('switch-on');
-  // modalTeam.classList.toggle('switch-on');
+  footer.classList.toggle('switch-on');
 
   logoText.classList.toggle('patriotic__blu');
   logoTextSpan.classList.toggle('patriotic__yellow');

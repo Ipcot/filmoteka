@@ -3,7 +3,7 @@
   &__container {
     position: relative;
     height: 230px;
-    padding-top: 40px;
+    // padding-top: 40px;
     background-color: $black-color;
     background-repeat: no-repeat;
     background-position: center;
@@ -66,7 +66,7 @@
 .logo {
   display: flex;
   align-items: center;
-
+  padding-top: 40px;
   &__icon {
     width: 24px;
     height: 24px;
@@ -84,13 +84,13 @@
 }
 
 body.patriotic-theme {
-  background: linear-gradient(135deg, rgb(94, 195, 240), rgb(240, 229, 85));
+  background: $switch-theme-gr;
 }
 .patriotic__blu {
-  @include font(500, 30px, 35px, rgb(94, 195, 240), 0);
+  @include font(500, 30px, 35px, $patriotic-blu, 0);
 }
 .patriotic__yellow {
-  @include font(500, 30px, 35px, rgb(240, 229, 85), 0);
+  @include font(500, 30px, 35px, $patriotic-yellow, 0);
 }
 
 .navigation {
@@ -99,7 +99,7 @@ body.patriotic-theme {
 
   &__menu {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
   }
 
   &__item {
@@ -118,6 +118,7 @@ body.patriotic-theme {
     font-size: 12px;
     line-height: 21px;
     text-transform: uppercase;
+    padding-top: 40px;
 
     &.active {
       &::after {
@@ -234,8 +235,8 @@ body.patriotic-theme {
 //----------SWITCH THEME BTN--------//
 .switch-btn {
   display: inline-block;
-  width: 60px;
-  height: 25px;
+  width: 40px;
+  height: 15px;
   background-color: $accent-color;
   border-radius: 15px;
   z-index: 0;
@@ -245,18 +246,28 @@ body.patriotic-theme {
   cursor: pointer;
   position: relative;
   transition-duration: 300ms;
+  @media screen and (min-width: $tablet) {
+    width: 60px;
+    height: 25px;
+  }
 }
 .switch-btn::after {
   content: '';
-  height: 20px;
-  width: 20px;
+  height: 10px;
+  width: 10px;
   border-radius: 15px;
   background-color: $black-color;
-  top: 3px;
-  left: 3px;
+  top: 2.5px;
+  left: 2.5px;
   transition-duration: 300ms;
   position: absolute;
   z-index: 1;
+  @media screen and (min-width: $tablet) {
+    height: 20px;
+    width: 20px;
+    top: 3px;
+    left: 3px;
+  }
 }
 .switch-on {
   background-position-x: -100px;
@@ -264,8 +275,11 @@ body.patriotic-theme {
 }
 .switch-on::after {
   background: rgb(94, 195, 240);
+  left: 27px;
 
-  left: 37px;
+  @media screen and (min-width: $tablet) {
+    left: 37px;
+  }
 }
 
 // ------------ LIB (+button) -----------------//
