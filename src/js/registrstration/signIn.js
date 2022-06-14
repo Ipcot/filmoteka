@@ -38,10 +38,8 @@ const form = document.querySelector('.modal-body-sign');
  btnGoogle.addEventListener('click', onFormcoogle);
 
 function onFormInput(e) {
-    formDataSign[e.target.name] = e.target.value
-    console.log(formDataSign)
+    formDataSign[e.target.name] = e.target.value;
      email = formDataSign.email;
-     console.log(email);
     password = formDataSign.password;
 
 }
@@ -66,8 +64,6 @@ function onFormSubmitSignIn(e) {
    
     e.preventDefault()
     e.target.reset();
-    console.log(email);
-    console.log(password);
     signInWithEmailAndPassword(auth, email, password).then(successSignIn).catch(function (error) {
         Notiflix.Notify.failure(`${error.code}`)
         Notiflix.Notify.failure(`${error.message}`);
