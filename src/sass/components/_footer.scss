@@ -45,8 +45,10 @@
     color: #545454;
     margin: 0px auto;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    width: max-content;
+    // width: max-content;
     margin: 0 auto;
   }
 

@@ -34,7 +34,7 @@
   transition: transform $animation-duration $bezier-transition,
     opacity $animation-duration $bezier-transition;
   @media screen and (min-width: $tablet) {
-    padding: 40px 72px 40px 36px;
+    padding: 40px 60px 40px 36px;
     margin-top: 7%;
     width: 704px;
     height: 552px;
