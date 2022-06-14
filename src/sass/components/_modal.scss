@@ -87,11 +87,13 @@
   }
   @media screen and (min-width: $desktop) {
     height: 490px;
+    max-width: 375px;
     & img {
+      display: block;
       width: auto;
       height: 100%;
       object-fit: cover;
-      object-position: bottom;
+      object-position: center center;
     }
   }
 }
@@ -126,8 +128,9 @@
   &__item {
     display: flex;
     align-items: baseline;
-    width: 215px;
+    width: 100%;
     margin: 8px 0;
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -195,13 +198,19 @@
 .modal__buttons {
   margin-top: 20px;
   display: flex;
-  margin-right: -20px;
+
+  @media screen and (min-width: $tablet) {
+    max-width: 264px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    max-width: none;
+  }
 }
 
 .modal__btn {
-  margin-right: 20px;
-  padding: 6px 27px;
-  max-width: 110px;
+  padding: 6px 10px;
+  width: 170px;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
@@ -213,18 +222,17 @@
   cursor: pointer;
   transition: all $animation-duration $bezier-transition;
 
-  &:hover {
-    background: $accent-color;
-    color: $white-color;
-    border-color: $accent-color;
-  }
   @media screen and (min-width: $tablet) {
-    min-width: 125px;
+    width: 145px;
     padding: 14px 8px;
   }
   @media screen and (min-width: $desktop) {
-    min-width: 136px;
+    width: 170px;
     padding: 14px 10px;
+  }
+
+  &:first-child {
+    margin-right: 15px;
   }
 }
 

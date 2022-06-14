@@ -1,5 +1,5 @@
 <div class='movie__image'>
-  <img src='https://image.tmdb.org/t/p/w400{{poster_path}}' alt='movie image' />
+  <img src='{{poster}}' alt='movie image' />
 </div>
 <div class='modal-wrapper'>
   <div class='title-container'>
@@ -23,9 +23,7 @@
     <li class='movie-details-info__item'>
       <p class='details__first-item'>Genre</p>
       <p class='details__second-item'>
-        {{#each genres}}
-          {{this.name}}
-        {{/each}}
+        {{genres}}
       </p>
     </li>
   </ul>
