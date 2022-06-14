@@ -28,7 +28,7 @@
     background: -webkit-gradient(linear, left top, left bottom, from(#04b709), to(#005d0b));
     background: linear-gradient(hsl(44, 96%, 37%), #ff6b08);
     border: 1px solid $white-color;
-    border-radius: 5px;
+    border-radius: 16px;
     padding: 5px 12px;
     color: #ddd;
     cursor: pointer;
@@ -37,16 +37,13 @@
 
 
 @media screen and (min-width: $tablet) {
-//     .btn-modal-login,
-//         .btn-modal-sign {
-//    ww
-//         }
-    
+    .btn-modal-login,
+        .btn-modal-sign {
+            border-radius: 8px;
+        }
         .btn-google {
             width: 50px;
-        }
-    
-        
+        }       
 }
 
 
