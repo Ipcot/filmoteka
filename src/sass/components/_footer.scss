@@ -44,6 +44,12 @@
     padding-bottom: 30px;
     color: #545454;
     margin: 0px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    // width: max-content;
+    margin: 0 auto;
   }
 
   &__icon {
@@ -68,4 +74,8 @@
 .material-icons {
   color: $accent-color;
   font-size: 18px;
+}
+
+.footer-icon {
+  margin: 0 3px;
 }

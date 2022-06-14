@@ -7,9 +7,12 @@ const refs = {
   watchedBtn: document.querySelector('.btn-library-watched'),
 };
 
+const WATCHED_ID_KEY = 'watched';
+const QUEUE_ID_KEY = 'queue';
+
 export function onBtnWatchedClick(e) {
-  const WATCHED_ID_KEY = 'watched';
   const movieId = e.target.dataset.id;
+
   addMovieIdToLocalStorage(WATCHED_ID_KEY, movieId);
   toggleBtn(WATCHED_ID_KEY);
 
@@ -17,8 +20,8 @@ export function onBtnWatchedClick(e) {
 }
 
 export function onBtnQueueClick(e) {
-  const QUEUE_ID_KEY = 'queue';
   const movieId = e.target.dataset.id;
+
   addMovieToQueue(QUEUE_ID_KEY, movieId);
   toggleBtn(QUEUE_ID_KEY);
 
@@ -30,7 +33,15 @@ function checkPlace(btn) {
 }
 
 function toggleBtn(key) {
+  const classActive = 'modal__btn--active';
   const btn = document.querySelector(`.js-modal-${key}`);
-  console.log(btn);
-  btn.classList.toggle('modal__btn--active');
+
+  if (btn.classList.contains(classActive)) {
+    btn.classList.remove(classActive);
+    btn.textContent = 'add to ' + key;
+    return;
+  }
+
+  btn.classList.add(classActive);
+  btn.textContent = 'remove from ' + key;
 }

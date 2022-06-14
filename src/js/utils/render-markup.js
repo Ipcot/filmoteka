@@ -21,7 +21,7 @@ function transformMovieData(movie, isLibrary) {
 
   const genres = isLibrary ? transformLibGenres(movie.genres) : getGenreNames(movie.genre_ids);
 
-  const year = release_date.slice(0, 4);
+  const year = release_date ? release_date.slice(0, 4) : 'unknown';
 
   return {
     poster: poster_path ? imgResource + poster_path : dullImg,
@@ -33,12 +33,20 @@ function transformMovieData(movie, isLibrary) {
   };
 }
 
-function transformLibGenres(genresObjs) {
-  const genres = genresObjs.map(genre => genre.name);
+function transformLibGenres(genresList) {
+  if (genresList.length === 0) {
+    return ['unknown'];
+  }
+
+  const genres = genresList.map(genre => genre.name);
   return sliceGenresList(genres);
 }
 
 function getGenreNames(genreIds) {
+  if (genreIds.length === 0) {
+    return ['unknown'];
+  }
+
   const genres = genreIds.map(genreId => {
     const currentGenre = genresList.find(genre => genre.id === genreId);
     return currentGenre.name;
