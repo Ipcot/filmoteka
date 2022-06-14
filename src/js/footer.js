@@ -1,5 +1,6 @@
 import teamTemplates from '../templates/our-team.hbs';
 import members from './data/our-team.json';
+import showConfetti from './utils/confetti';
 
 const refs = {
   openMenuBtn: document.querySelector('.footer__link'),
@@ -12,6 +13,7 @@ refs.openMenuBtn.addEventListener('click', onOpenModal);
 
 function onOpenModal(id) {
   renderOurTeam();
+  showConfetti();
   document.body.style.overflow = 'hidden';
   refs.backdrop.classList.remove('backdrop--is-hidden');
 

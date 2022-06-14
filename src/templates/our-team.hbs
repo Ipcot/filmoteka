@@ -1,13 +1,19 @@
 <div class='team-container'>
-  <h2 class='our-team-title'>Our Team</h2>
+  <h2 class='our-team-title'>Our <span class="our-team-search">Search🔎</span><span class="our-team-api"> Api</span> Team</h2>
   <ul class='team-list'>
     {{#each this}}
-      <li class='team-list__item'>
-        <div class='team-img'><img src='{{img}}' alt='{{name}}' /></div>
-        <div class='team-list__card'>
-          <div class='team-info'>
+      <li class='team-list__item '>
+        <div class="project-wrapper project">
+        <div class='team-img '><img src='{{img}}' alt='{{name}}' /></div>
+         <p class="top-text">
+               {{whatwork}}
+                </p>
+        </div>
+        <div class='team-list__card '>
+          <div class='team-info '>
             <p lang='en' class='team-list__title-developer'>{{name}}</p>
             <p lang='en' class='team-list__position-developer'>{{position}}</p>
+           
           </div>
           <a class='icon-github git-link' href='{{gitLink}}' target='_blank'>
             <img
