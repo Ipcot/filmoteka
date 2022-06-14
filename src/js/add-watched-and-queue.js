@@ -1,35 +1,40 @@
-import { addMovieIdToLocalStorage, addMovieToQueue } from './add-to-localstorage';
 import { renderLsData } from './utils/render-library-markup';
+import { currentMovie } from './modal';
 
-const refs = {
-  libraryBtn: document.querySelector('[data-page="library"]'),
-  queueBtn: document.querySelector('.btn-library-queue'),
-  watchedBtn: document.querySelector('.btn-library-watched'),
-};
+const libraryBtn = document.querySelector('[data-page="library"]');
 
-const WATCHED_ID_KEY = 'watched';
-const QUEUE_ID_KEY = 'queue';
+export default function onModalBtnClick(e) {
+  const { addTo } = e.currentTarget.dataset;
 
-export function onBtnWatchedClick(e) {
-  const movieId = e.target.dataset.id;
+  addMovieToLS(addTo, currentMovie);
+  toggleBtn(addTo);
 
-  addMovieIdToLocalStorage(WATCHED_ID_KEY, movieId);
-  toggleBtn(WATCHED_ID_KEY);
-
-  checkPlace(refs.watchedBtn) && renderLsData(WATCHED_ID_KEY);
+  const activeLibBtn = document.querySelector(`.btn-library-${addTo}`);
+  checkPlace(activeLibBtn) && renderLsData(addTo);
 }
 
-export function onBtnQueueClick(e) {
-  const movieId = e.target.dataset.id;
+function addMovieToLS(key, movie) {
+  const lsValue = localStorage.getItem(key);
 
-  addMovieToQueue(QUEUE_ID_KEY, movieId);
-  toggleBtn(QUEUE_ID_KEY);
+  if (!lsValue) {
+    localStorage.setItem(key, JSON.stringify([movie]));
+    return;
+  }
 
-  checkPlace(refs.queueBtn) && renderLsData(QUEUE_ID_KEY);
+  let movies = JSON.parse(lsValue);
+  const isMovieInLS = movies.find(item => item.id === movie.id);
+
+  if (isMovieInLS) {
+    movies = movies.filter(item => item.id !== movie.id);
+  } else {
+    movies.push(movie);
+  }
+
+  localStorage.setItem(key, JSON.stringify(movies));
 }
 
 function checkPlace(btn) {
-  return refs.libraryBtn.classList.contains('active') && btn.classList.contains('is-active');
+  return libraryBtn.classList.contains('active') && btn.classList.contains('is-active');
 }
 
 function toggleBtn(key) {

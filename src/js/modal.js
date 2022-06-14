@@ -1,6 +1,6 @@
 import showSpinner from '../js/utils/spinner';
 import modalTpl from '../templates/modal.hbs';
-import { onBtnWatchedClick, onBtnQueueClick } from './add-watched-and-queue';
+import onModalBtnClick from './add-watched-and-queue';
 import MoviesAPI from './services/movies-api';
 import dullImg from '../img/poster.jpg';
 
@@ -13,6 +13,8 @@ const refs = {
   backdrop: document.querySelector('.js-backdrop'),
   modalClose: document.querySelector('.js-modal-close'),
 };
+
+export let currentMovie = null;
 
 export default function onOpenModal(id) {
   showSpinner(true);
@@ -27,12 +29,12 @@ export default function onOpenModal(id) {
 }
 
 function onCloseModal() {
+  const modalBtns = document.querySelectorAll('[data-add-to]');
+  modalBtns.forEach(btn => btn.removeEventListener('click', onModalBtnClick));
   window.removeEventListener('keydown', onEscKeyPress);
-  document.querySelector('.js-modal-watched').removeEventListener('click', onBtnWatchedClick);
-  document.querySelector('.js-modal-queue').removeEventListener('click', onBtnQueueClick);
 
-  document.body.style.overflow = 'auto';
   refs.backdrop.classList.add('backdrop--is-hidden');
+  document.body.style.overflow = 'auto';
   refs.modal.innerHTML = '';
 }
 
@@ -52,28 +54,31 @@ function createModal(movieId) {
   moviesAPI
     .fetchMovieDetails(movieId)
     .then(movieData => {
-      const dataTransformed = transformMovieData(movieData);
-      const markup = modalTpl(dataTransformed);
-      refs.modal.innerHTML = markup;
+      refs.modal.innerHTML = modalTpl(transform(movieData));
+
+      currentMovie = movieData;
     })
     .finally(() => {
       showSpinner(false);
+
       checkLsId(movieId, 'watched');
       checkLsId(movieId, 'queue');
-      document.querySelector('.js-modal-watched').addEventListener('click', onBtnWatchedClick);
-      document.querySelector('.js-modal-queue').addEventListener('click', onBtnQueueClick);
+
+      const modalBtns = document.querySelectorAll('[data-add-to]');
+      modalBtns.forEach(btn => btn.addEventListener('click', onModalBtnClick));
     });
 }
 
 function checkLsId(id, key) {
   const lsValue = localStorage.getItem(key);
+
   if (!lsValue) {
     return;
   }
 
   const lsValueParsed = JSON.parse(lsValue);
 
-  if (lsValueParsed.includes(id)) {
+  if (lsValueParsed.find(movie => movie.id === Number(id))) {
     enableBtn(key);
   }
 }
@@ -84,7 +89,7 @@ function enableBtn(key) {
   btn.textContent = 'remove from ' + key;
 }
 
-function transformMovieData(movieData) {
+function transform(movieData) {
   const { poster_path, genres: genresList } = movieData;
 
   let genres = genresList.map(g => g.name);

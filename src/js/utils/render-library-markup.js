@@ -1,9 +1,5 @@
-import MoviesAPI from '../services/movies-api';
-import { renderLibraryItem } from './render-markup';
 import renderMarkup from './render-markup';
-import Notiflix from 'notiflix';
-
-const moviesAPI = new MoviesAPI();
+import { Notify } from 'notiflix';
 
 const LS_LIB_LAST = 'libraryLast';
 const LS_QUEUE = 'queue';
@@ -17,8 +13,8 @@ const refs = {
   moviesContainer: document.querySelector('.js-movies'),
 };
 
-refs.queueBtn.addEventListener('click', onQueueBtnClick);
-refs.watchedBtn.addEventListener('click', onWatchedBtnClick);
+refs.queueBtn.addEventListener('click', () => onLibBtnClick(LS_QUEUE));
+refs.watchedBtn.addEventListener('click', () => onLibBtnClick(LS_WATCHED));
 
 function onGoToMyLibrary() {
   const libraryLast = localStorage.getItem(LS_LIB_LAST);
@@ -38,45 +34,35 @@ function onGoToMyLibrary() {
   renderLsData(libraryLast);
 }
 
-function onQueueBtnClick() {
-  showLibDull(false);
-  renderLsData(LS_QUEUE);
-  localStorage.setItem(LS_LIB_LAST, LS_QUEUE);
-}
-
-function onWatchedBtnClick() {
-  showLibDull(false);
-  renderLsData(LS_WATCHED);
-  localStorage.setItem(LS_LIB_LAST, LS_WATCHED);
-}
-
-function renderLibraryMarkup(movieIds) {
-  renderMarkup([]);
-
-  movieIds.forEach(movieId => {
-    moviesAPI.fetchMovieDetails(movieId).then(data => {
-      renderLibraryItem(data);
-    });
-  });
+function onLibBtnClick(key) {
+  renderLsData(key);
+  localStorage.setItem(LS_LIB_LAST, key);
 }
 
 export function renderLsData(key) {
+  showLibDull(false);
+
   const lsData = localStorage.getItem(key);
   const place = key === LS_QUEUE ? 'the queue' : 'watched';
+  const warning = `No movies in ${place}.`;
 
   if (!lsData) {
-    Notiflix.Notify.warning(`No movies added to ${place}.`);
+    Notify.warning(warning);
     showLibDull(true);
     renderMarkup([]);
     return;
   }
 
   const lsDataParsed = JSON.parse(lsData);
+  renderMarkup(lsDataParsed, true);
 
-  lsDataParsed.length === 0 && showLibDull(true);
+  if (lsDataParsed.length === 0) {
+    Notify.warning(warning);
+    showLibDull(true);
+    return;
+  }
 
-  renderLibraryMarkup(lsDataParsed);
-  Notiflix.Notify.info(`You have ${lsDataParsed.length} movies in ${place}.`);
+  Notify.info(`You have ${lsDataParsed.length} movies in ${place}.`);
 }
 
 export function showLibDull(isShown) {
