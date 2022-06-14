@@ -29,11 +29,11 @@
   height: 270px;
 
   @media screen and (min-width: $tablet) {
-     height: 155px;  
+    height: 155px;
   }
 
   @media screen and (min-width: $desktop) {
-     height: 140px;
+    height: 140px;
   }
 }
 
@@ -52,7 +52,7 @@
   position: absolute;
 }
 
-.checkbox-icon{
+.checkbox-icon {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -60,12 +60,14 @@
   border: 1px solid $accent-color;
   background-color: transparent;
   transition: all 0.3s ease-in-out;
+  background-position: center 75%;
+  background-repeat: no-repeat;
 }
 
 .custom-checkbox:checked + .checkbox-icon {
   background-color: $accent-color;
   background-image: url(../img/icons/check-mark.svg);
-  background-size: contain;
+  background-size: 85%;
 }
 
 .checkbox-wrapper {
