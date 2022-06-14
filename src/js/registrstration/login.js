@@ -35,9 +35,7 @@ form.addEventListener('input', onFormInput);
 
 function onFormInput(e) {
     formData[e.target.name] = e.target.value
-    console.log(formData)
      email = formData.email;
-     console.log(email);
     password = formData.password;
     name = formData.text;
     
@@ -49,8 +47,6 @@ function onFormSubmitRegister(e) {
     
     e.preventDefault()
     e.target.reset();
-    console.log(email);
-    console.log(password);
     createUserWithEmailAndPassword(auth, email, password, name).then(successRegister ).catch(function (error) {
         Notiflix.Notify.failure(`${error.code}`)
         Notiflix.Notify.failure(`${error.message}`);

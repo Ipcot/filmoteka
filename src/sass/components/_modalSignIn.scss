@@ -1,7 +1,29 @@
 .btn_container{
     margin-top: 10px;
 }
-.btn-modal-login, .btn-modal-sign {
+
+ .btn-google {
+     position: fixed;
+     top: 10px;
+     right: 20px;
+     width: 30px;
+     background: none;
+     cursor: pointer;
+ }
+
+  .btn-google:hover {
+      border: 2px solid $accent-color;
+      border-radius: 5px;
+  }
+  
+  .btn-modal-login:hover,
+.btn-modal-sign:hover {
+    background: -webkit-gradient(linear, left top, left bottom, from(#005d0b), to(#04b709));
+    background: linear-gradient(#005d0b, #04b709);
+}
+
+.btn-modal-login,
+.btn-modal-sign {
     margin-left: 5px;
     background: -webkit-gradient(linear, left top, left bottom, from(#04b709), to(#005d0b));
     background: linear-gradient(hsl(44, 96%, 37%), #ff6b08);
@@ -10,26 +32,21 @@
     padding: 5px 12px;
     color: #ddd;
     cursor: pointer;
+    box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
 }
 
-.btn-google {
-   position: fixed; 
-   top: 10px;
-   right: 20px;
-   width: 50px;
-   background: none;
-   cursor: pointer;
-}
 
-.btn-google:hover{
-    border: 2px solid $accent-color;
-    border-radius: 5px;
-}
-
-.btn-modal-login:hover,
-.btn-modal-sign:hover {
-    background: -webkit-gradient(linear, left top, left bottom, from(#005d0b), to(#04b709));
-    background: linear-gradient(#005d0b, #04b709);
+@media screen and (min-width: $tablet) {
+//     .btn-modal-login,
+//         .btn-modal-sign {
+//    ww
+//         }
+    
+        .btn-google {
+            width: 50px;
+        }
+    
+        
 }
 
 
