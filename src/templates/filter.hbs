@@ -2,8 +2,10 @@
   <div class='genres-list'>
   {{#each this}}
     <div class="checkbox-wrapper">
-      <label for="{{name}}" class="genre-name" >{{name}}</label>
-      <input id="{{name}}" type="checkbox" value="{{id}}" class="custom-checkbox" >
+      <label class="genre-name" >  
+      <input id="{{name}}" type="checkbox" value="{{id}}" class="custom-checkbox" >{{name}}
+      <span class="checkbox-icon"></span>
+       </label>
     </div>
   {{/each}}
   </div>
