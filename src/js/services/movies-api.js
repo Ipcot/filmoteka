@@ -25,7 +25,7 @@ class MoviesAPI {
     this.#genres = genreIds.join(',');
   }
 
-  async fetchFiteredMovies(page = 1) {
+  async fetchFilteredMovies(page = 1) {
     const pathname = '/discover/movie';
     const params = new URLSearchParams({
       page,

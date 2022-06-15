@@ -87,10 +87,6 @@ const options = {
 
 let instance;
 
-function onResize() {
-  matchStylesToMedia();
-}
-
 function matchStylesToMedia() {
   let refs = {
     prevEllipBtn: document.querySelector('.tui-prev-is-ellip'),
@@ -120,7 +116,7 @@ function onPageChange(currentPage = 1) {
   let totalBatches = Math.ceil(totalPages / options.visiblePages);
   let currentBatch = Math.ceil(currentPage / options.visiblePages);
 
-  onResize();
+  matchStylesToMedia();
 
   if (totalPages <= 1) {
     container.classList.add('pagination__move-btn--hidden');
@@ -168,4 +164,4 @@ export function showPagination(isShown) {
   container.classList.add('pagination--hidden');
 }
 
-window.addEventListener('resize', throttle(onResize, 200));
+window.addEventListener('resize', throttle(matchStylesToMedia, 200));
