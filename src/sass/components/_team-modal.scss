@@ -144,7 +144,7 @@
   position: absolute;
   bottom: 0;
   width: 180px;
-  height: 250px;
+  height: 180px;
   padding: 5px;
   overflow: scroll;
   transform: translateY(100%);
@@ -161,10 +161,14 @@
     width: 110px;
     height: 177px;
   }
+  @media screen and (min-width: $tablet) {
+    width: 110px;
+    height: 110px;
+  }
 
   @media screen and (min-width: $desktop) {
     width: 143px;
-    height: 210px;
+    height: 143px;
   }
 }
 
