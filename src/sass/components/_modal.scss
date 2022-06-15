@@ -221,6 +221,10 @@
   border: 1px solid $black-color;
   cursor: pointer;
   transition: all $animation-duration $bezier-transition;
+  &:hover,
+  &:focus {
+    box-shadow: $accent-shadow;
+  }
 
   @media screen and (min-width: $tablet) {
     width: 145px;
