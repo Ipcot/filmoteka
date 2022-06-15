@@ -11,7 +11,9 @@
         {{/each}}
       </ul>
       <p class='card__year'>{{year}}</p>
-      <p class='card__rating'>{{vote_average}}</p>
+      {{#if vote_average}}
+        <p class='card__rating'>{{vote_average}}</p>
+      {{/if}}
     </div>
   </div>
 </li>
