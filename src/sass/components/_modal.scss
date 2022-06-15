@@ -30,6 +30,7 @@
   width: 292px;
   background-color: $white-color;
   opacity: 1;
+  border-radius: 8px;
   transform: scale(1);
   transition: transform $animation-duration $bezier-transition,
     opacity $animation-duration $bezier-transition;

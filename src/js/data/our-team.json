@@ -3,14 +3,14 @@
     "name": "Yuriy",
     "position": "Teamlead",
     "img": "https://avatars.githubusercontent.com/u/92395188?v=4",
-    "whatwork": "By clicking on the 'Add to watched' button, the movie is added to the watched movies of the current user (local-storage)",
+    "whatwork": "By clicking on the 'Add to watched' button, the movie is added to the watched movies of the current user (local-storage). By clicking on the 'Add to queue' button, the movie is added to the queue of the current user (localstorage).",
     "gitLink": "https://github.com/Ipcot"
   },
   {
     "name": "Anna",
     "position": "Scrum master",
     "img": "https://avatars.githubusercontent.com/u/90900129?v=4",
-    "whatwork": "Mark up the header of the main page (mobile, tablet, desktop). By clicking on the logo/button 'Home' the main page is drawn. ",
+    "whatwork": "Mark up the header of the main page (mobile, tablet, desktop). By clicking on the logo/button 'Home' the main page is drawn. By clicking on the 'My Library' button, the user's library is drawn. Mark up header for 'My Library' page (mobile, tablet, desktop)",
     "gitLink": "https://github.com/berkmansanna"
   },
 
@@ -18,7 +18,7 @@
     "name": "Dmitry",
     "position": "Developer",
     "img": "https://avatars.githubusercontent.com/u/91727549?v=4",
-    "whatwork": "Implemented loading of popular films on the main page. Implemented search and rendering of movies by keyword.",
+    "whatwork": "Implemented loading of popular films on the main page. Implemented search and rendering of movies by keyword. Design the main page container for the correct positioning of movie cards (mobile, tablet, desktop).",
     "gitLink": "https://github.com/demetrx"
   },
   {
@@ -32,14 +32,14 @@
     "name": "Yura",
     "position": "Developer",
     "img": "https://avatars.githubusercontent.com/u/54137580?v=4",
-    "whatwork": "Pagination on the main page.",
+    "whatwork": "Pagination on the main page. When switching to each page, draw the corresponding part of the movies.",
     "gitLink": "https://github.com/nomatter-py"
   },
   {
     "name": "Vladislav",
     "position": "Developer",
     "img": "https://avatars.githubusercontent.com/u/91179551?v=4",
-    "whatwork": "Marked up the modal template for one movie (mobile, tablet, desktop). Implemented closing the modal by pressing the ESC key and by clicking outside the modal area, did not forget to remove the listeners.",
+    "whatwork": "Marked up the modal template for one movie (mobile, tablet, desktop). Implemented closing the modal by pressing the ESC key and by clicking outside the modal area, did not forget to remove the listeners. By clicking on the movie card on any page, a modal should open with dynamically inserted information about the movie.",
     "gitLink": "https://github.com/11Vladislav"
   },
   {
@@ -54,7 +54,7 @@
     "name": "Nataliya",
     "position": "Developer",
     "img": "https://avatars.githubusercontent.com/u/90378512?v=4",
-    "whatwork": "Connected spinner for asynchronous requests. By clicking on the 'Watched' button, the user's watched movies are shown.",
+    "whatwork": "Connected spinner for asynchronous requests. By clicking on the 'Watched' button, the user's watched movies are shown. By clicking on the 'Queue' button, movies added to the user's queue are shown.",
     "gitLink": "https://github.com/Nataliyalevitska"
   },
   {
