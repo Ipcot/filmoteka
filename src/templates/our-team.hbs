@@ -2,8 +2,15 @@
   <h2 class='our-team-title'>Our <span class="our-team-search">Search🔎</span><span class="our-team-api"> Api</span> Team</h2>
   <ul class='team-list '>
     {{#each this}}
-      <li class='team-list__item text-wrapper text'>
-        <div class='team-img '><img src='{{img}}' alt='{{name}}' /></div>
+      <li class='team-list__item '>
+        <div class='team-img text-wrapper text'><img src='{{img}}' alt='{{name}}' />
+        <p class="top-text">
+               {{whatwork}}
+                </p>
+        
+        </div>
+        
+                  
         <div class='team-list__card  '>
           <div class='team-info '>
             <p lang='en' class='team-list__title-developer'>{{name}}</p>
@@ -17,10 +24,8 @@
               alt='icon github'
             />
           </a>
-          <p class="top-text">
-               {{whatwork}}
-                </p>
           </div>
+        
       </li>          
     {{/each}}
   </ul>
