@@ -33,7 +33,9 @@
   }
 
   @media screen and (min-width: $desktop) {
-    height: 140px;
+    height: 135px;
+    padding-bottom: 8px;
+    padding-top: 5px;
   }
 }
 
