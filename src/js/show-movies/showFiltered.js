@@ -13,7 +13,7 @@ function searchWithFilter(genreIds) {
 function showFitered(page) {
   showSpinner(true);
   moviesAPI
-    .fetchFiteredMovies(page)
+    .fetchFilteredMovies(page)
     .then(({ results, total_results }) => {
       renderMarkup(results);
       if (page === 1) {

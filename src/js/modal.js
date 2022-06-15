@@ -3,7 +3,7 @@ import modalTpl from '../templates/modal.hbs';
 import onModalBtnClick from './add-watched-and-queue';
 import MoviesAPI from './services/movies-api';
 import dullImg from '../img/poster.jpg';
-
+import showConfetti from './utils/confetti';
 const imgResource = 'https://image.tmdb.org/t/p/w300';
 
 const moviesAPI = new MoviesAPI();
@@ -18,6 +18,7 @@ export let currentMovie = null;
 
 export default function onOpenModal(id) {
   showSpinner(true);
+  showConfetti();
   createModal(id);
 
   document.body.style.overflow = 'hidden';
