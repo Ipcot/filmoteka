@@ -95,10 +95,10 @@ function transform(movieData) {
 
   let genres = genresList.map(g => g.name);
 
-  if (genres.length > 3) {
-    genres = genres.slice(0, 2);
-    genres.push('Other');
-  }
+  // if (genres.length > 3) {
+  //   genres = genres.slice(0, 2);
+  //   genres.push('Other');
+  // }
 
   return {
     ...movieData,
