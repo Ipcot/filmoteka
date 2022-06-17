@@ -12,7 +12,7 @@ export const refs = {
   btnsLibs: document.querySelectorAll('.library-menu__button'),
   navMenu: document.querySelector('.navigation__menu'),
   navLinks: document.querySelectorAll('.navigation__link'),
-  homeLink: document.querySelector('[init]'),
+  homeLink: document.querySelector('[data-page="home"]'),
   switchLinkRefs: document.querySelectorAll('[data-action="switch-page"]'),
   rootControl: document.querySelector('.search-conteiner'),
   searchForm: document.querySelector('[data-root="search-form"]'),
